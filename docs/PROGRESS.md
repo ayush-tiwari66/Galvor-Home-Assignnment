@@ -35,14 +35,19 @@
 | Show a child visibly enjoying the product | Strongest sales signal; holds without the biggest concepts and after controls |
 | A child in the first 3 seconds wins attention, not purchases | Closest to the top grade |
 | End with a clear ask | Holds after controls; may be overstated |
-| A parent's personal story alone may sell less well | Caution only |
-| Recipes, routines, protein, immunity and science aren't sales arguments by themselves | No evidence for them once LJ-004 is set aside |
+| A parent's personal story alone may sell less well | Caution only; keep the parent's voice and pair it with a child enjoying the product |
+| Picky eating, recipes and growth are the reason to care, not the proof | No evidence alone once LJ-004 is set aside; do better paired with a child enjoying the product (ungraded lead) |
+| Immunity and science-led messages | Too few paired ads to tell; keep as supporting points, with claims approved |
 
 These are associations in synthetic data, not proof of cause.
+
+**Owner review (4 Nov):** the project owner agreed with most points and cautioned against changing briefs on two: parent stories (peer trust) and growth, immunity and picky eating (main buying triggers). Follow-up checks are in the report. Outcome: no format or angle gets removed, parent voice stays, and the first campaign tests pairing.
 
 ## Carried into M3
 
 - Score creative fit on what the ads support: can this creator naturally show a child enjoying the product? Reward that, not recipes or routines alone.
+- Don't mark creators down for being parents or making UGC, or for covering growth, immunity or picky eating.
+- For M5: every brief uses a parent's voice or the creator's native format, with a category reason to care and a child enjoying the product as the proof. The test plan should compare a parent's story with and without that moment.
 - Don't penalise Hinglish. Don't favour a creator for attention alone, or for doctor-style authority.
 - `foodies_by_neha` was on the early contender list, but shows no children on camera and recipes aren't a proven sales argument. Let the scoring decide.
 - Charts move to M6, when the report and app are built.

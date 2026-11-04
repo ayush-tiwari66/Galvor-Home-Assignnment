@@ -13,6 +13,7 @@ The project is built with Claude Code. This log records decisions made with AI a
 | 4 Nov | Reviewed product map instead of keyword rules | Claude, after finding the bug below | Keyword rules failed on a large ad |
 | 4 Nov | Grades for ad patterns fixed in code before final results; not loosened when nothing reached the top grade | Claude proposed; pending review | Moving the bar afterwards would make the grades meaningless |
 | 4 Nov | Use Gemini for briefs; keep all work on `main` | Project owner | Owner's decisions |
+| 4 Nov | Don't drop parent stories or growth, immunity and picky eating angles; use them as the reason to care, with a child enjoying the product as proof | Project owner challenged Claude's draft; Claude tested it | Owner's category knowledge. The data rejected the weak-hook explanation but supported pairing, so the briefs changed |
 
 ## Mistakes caught
 

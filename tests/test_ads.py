@@ -264,6 +264,28 @@ def test_report_marks_data_as_synthetic_and_keeps_interpretation_apart(table, co
     assert "What this means (interpretation)" in report and "Too few concepts to grade" in report
 
 
+def test_follow_up_checks_can_be_reproduced_by_hand(concepts):
+    primary = concepts[~concepts.dominant_ad].reset_index(drop=True)
+    hooks, angles, hook_corr, _ = A.follow_up_checks(primary)
+    parent = primary[(primary.creator_type == "parent_or_caregiver") & primary.purchases.notna()]
+    row = hooks.set_index("group").loc["Parent-led"]
+    assert row.cvr == pytest.approx(parent.purchases.sum() / parent.link_clicks.sum())
+    assert hook_corr == pytest.approx(parent.hook_rate.corr(parent.cvr, method="spearman"))
+    picky = primary.narratives.fillna("").str.contains("fussy_eating")
+    enjoying = primary.demo_shown.fillna("").str.contains("taste_test")
+    assert angles.set_index("group").n["Picky eating, with a child enjoying"] == (picky & enjoying).sum()
+
+
+def test_follow_up_groups_split_without_overlap(concepts):
+    primary = concepts[~concepts.dominant_ad].reset_index(drop=True)
+    hooks, angles, _, _ = A.follow_up_checks(primary)
+    counts = hooks.set_index("group").n
+    assert counts["Parent-led"] + counts["Not parent-led"] == len(primary)
+    assert counts["Parent-led, stronger hook"] + counts["Parent-led, weaker hook"] == counts["Parent-led"]
+    by_group = angles.set_index("group").n
+    assert by_group["Parent-led, with a child enjoying"] + by_group["Parent-led, without"] == counts["Parent-led"]
+
+
 def test_small_groups_are_reported_rather_than_vanishing(corrected):
     small = A.too_small_to_test(corrected).set_index("pattern")
     assert small.concepts["ad_format = child_led"] == 4

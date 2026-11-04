@@ -329,10 +329,10 @@ THEMES = [
     {"title": "A parent's personal story may sell less well",
      "evidence": [("creator_type = parent_or_caregiver", "cvr"), ("hook_driver = personal_experience", "cvr"), ("hook_driver = personal_experience", "hold_rate"),
                   ("proof_used = creator_testimonial", "cvr"), ("production = ugc", "cvr")],
-     "reading": "This matters here because most candidate creators are parents making UGC, but treat it as a caution. Only personal-experience hooks hold "
-                "after controls, and the testimonial and UGC gaps largely disappear without their biggest concepts. It doesn't show parent creators "
-                "fail. It suggests a parent's own story may not be enough by itself, so the practical step is to pair a parent's reach with a child "
-                "enjoying the product."},
+     "reading": "This matters here because most candidate creators are parents making UGC, so treat it as a caution and not a reason to change the format. "
+                "Only personal-experience hooks hold after controls, and the testimonial and UGC gaps largely disappear without their biggest concepts. "
+                "It doesn't show parent creators fail, and peer trust isn't something this file can measure. Keep the parent's voice and pair it with a "
+                "child enjoying the product (see 'Follow-up checks')."},
     {"title": "Language matters, but this file can't say why",
      "evidence": [("language = English", "cvr"), ("language = regional", "cvr"), ("language = regional", "hold_rate"), ("language = Hinglish", "cvr")],
      "reading": "English ads convert better and regional ones worse. We can't see targeting, so this could be who was shown the ad rather than the language "
@@ -342,13 +342,13 @@ THEMES = [
      "evidence": [("cta_type = buy_now", "cvr")],
      "reading": "Many ads end with no request at all. Asking costs nothing, so every brief should end with one. The buy-now group also holds many of the "
                 "strongest ads, so the true effect may be smaller than this."},
-    {"title": "Popular themes with no sales evidence",
+    {"title": "Popular themes: keep them as the reason to care, not the proof",
      "evidence": [("story_structure = routine_integration", "roas"), ("narratives = recipe", "roas"), ("main_benefit = protein_intake", "roas"),
                   ("hook_type = story_open", "roas"), ("persuasion = authority_science", "roas"), ("narratives = kids_immunity", "roas")],
-     "reading": "No evidence either way is different from evidence against. These may still work, but this file gives no reason to favour them. Several "
-                "looked like winners only because LJ-004 carries those labels. Protein comes closest, but its lead falls away without its biggest "
-                "concepts. Recipes and routines may suit a creator's style, but they aren't a sales argument by themselves, and the science-led route "
-                "has no support here."},
+     "reading": "No evidence either way is different from evidence against, so none of these should be dropped. The brand uses them widely, and growth, "
+                "immunity and picky eating may well be why parents start looking. Several looked like winners only because LJ-004 carries those labels, "
+                "and protein's lead falls away without its biggest concepts. So they don't work as the sales proof by themselves. In these ads they do better "
+                "alongside a child enjoying the product (see 'Follow-up checks'). The science-led route has the least support."},
 ]
 
 
@@ -374,6 +374,58 @@ def theme_lines(table: pd.DataFrame, primary: pd.DataFrame) -> list[str]:
             lines.append(f"| {pattern} | {metric} | {r.n_in} | {format_rate(metric, r.rate_in)} | {format_rate(metric, r.rate_out)} | {without} | "
                          f"{r.controlled_lift:+.0%}{'*' if r.controlled_p < ALPHA else ''} | {r.grade} |")
     return lines
+
+
+def group_row(primary: pd.DataFrame, name: str, mask: pd.Series) -> dict:
+    m = pooled_metrics(primary[mask])
+    return {"group": name, "n": int(mask.sum()), "hook_rate": m["hook_rate"], "hold_rate": m["hold_rate"], "cvr": m["cvr"], "roas": m["roas"]}
+
+
+def follow_up_checks(primary: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, float, float]:
+    """The project owner's two objections, tested on the same concepts. Exploratory: chosen after seeing results, so ungraded."""
+    def has(column, value):
+        return primary[column].fillna("").str.contains(value)
+
+    parent = primary.creator_type == "parent_or_caregiver"
+    story = primary.hook_driver == "personal_experience"
+    ugc = primary["production"] == "ugc"
+    strong_hook = primary.hook_rate >= primary.loc[parent, "hook_rate"].median()
+    strong_hold = primary.hold_rate >= primary.loc[parent, "hold_rate"].median()
+    hooks = pd.DataFrame([
+        group_row(primary, "Parent-led", parent), group_row(primary, "Not parent-led", ~parent),
+        group_row(primary, "Personal-experience hook", story), group_row(primary, "Other hook drivers", ~story),
+        group_row(primary, "UGC", ugc), group_row(primary, "Not UGC", ~ugc),
+        group_row(primary, "Parent-led, stronger hook", parent & strong_hook), group_row(primary, "Parent-led, weaker hook", parent & ~strong_hook),
+        group_row(primary, "Parent-led, stronger hold", parent & strong_hold), group_row(primary, "Parent-led, weaker hold", parent & ~strong_hold),
+    ])
+    enjoying = has("demo_shown", "taste_test")
+    angles = {"Picky eating": has("narratives", "fussy_eating"), "Recipe": has("narratives", "recipe"), "Growth": has("narratives", "kids_overall_growth"),
+              "Immunity": has("narratives", "kids_immunity"), "Science-led": has("persuasion", "authority_science"), "Parent-led": parent}
+    rows = []
+    for name, mask in angles.items():
+        rows += [group_row(primary, f"{name}, with a child enjoying", mask & enjoying), group_row(primary, f"{name}, without", mask & ~enjoying)]
+    parents = primary[parent & primary.purchases.notna()]
+    return hooks, pd.DataFrame(rows), parents.hook_rate.corr(parents.cvr, method="spearman"), parents.hold_rate.corr(parents.cvr, method="spearman")
+
+
+def follow_up_lines(primary: pd.DataFrame) -> list[str]:
+    hooks, angles, hook_corr, hold_corr = follow_up_checks(primary)
+
+    def rows(frame):
+        return [f"| {r.group} | {r.n} | {r.hook_rate:.1%} | {r.hold_rate:.1%} | {r.cvr:.1%} | {r.roas:.2f} |" for r in frame.itertuples()]
+
+    header = ["| Group | Concepts | Hook rate | Hold rate | CVR | ROAS |", "|---|---:|---:|---:|---:|---:|"]
+    return ["## Follow-up checks after the project owner's review", "",
+            "The project owner cautioned that, in Indian parenting, peer validation builds trust and weak parent ads may reflect hooks or pacing rather than UGC, "
+            "and that growth, immunity and picky eating are main buying triggers. That is category knowledge, which this file can't confirm or rule out. "
+            "These checks test what the file can. They were chosen after seeing results and are ungraded, so they're leads, and groups overlap.", "",
+            "### Is it weak hooks or pacing?", ""] + header + rows(hooks) + ["",
+            f"Among parent-led concepts, rank correlation with CVR: hook rate {hook_corr:+.2f}, hold rate {hold_corr:+.2f}.", "",
+            "Reading: weak hooks don't explain it here. Parent-led ads hook at least as well as others, and those with stronger hooks convert less. Pacing may play "
+            "a part for personal-story hooks, which hold viewers less well, but better hold goes with only a small gain in parent-led CVR and none in ROAS.", "",
+            "### Do these angles work when paired with a child enjoying the product?", ""] + header + rows(angles) + ["",
+            "Reading: in this file, picky eating, recipes, growth and parent-led ads all do better when paired with a child enjoying the product. Immunity and science have "
+            "too few such ads to tell. A few large ads sit behind several of these groups, and pairing was never tested on purpose, so the first campaign should test it.", ""]
 
 
 def product_lines_table(primary: pd.DataFrame) -> list[str]:
@@ -409,6 +461,7 @@ def write_report(table: pd.DataFrame, ads: pd.DataFrame, folder: Path, raw_label
     primary = to_concepts(kids)
     primary = primary[~primary.dominant_ad].reset_index(drop=True)
     lines += theme_lines(table, primary)
+    lines += [""] + follow_up_lines(primary)
     correlation = primary[["spend_inr", "hook_rate", "cvr", "roas"]].corr("spearman")
     lines += ["", "## Where the money went", "",
               f"Rank correlations across concepts: spend and hook rate {correlation.loc['spend_inr', 'hook_rate']:+.2f}, spend and ROAS {correlation.loc['spend_inr', 'roas']:+.2f}, "

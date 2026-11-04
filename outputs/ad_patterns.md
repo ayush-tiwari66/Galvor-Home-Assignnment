@@ -54,7 +54,7 @@ A child in the first 3 seconds came closest to the top grade but didn't reach it
 
 ### A parent's personal story may sell less well
 
-This matters here because most candidate creators are parents making UGC, but treat it as a caution. Only personal-experience hooks hold after controls, and the testimonial and UGC gaps largely disappear without their biggest concepts. It doesn't show parent creators fail. It suggests a parent's own story may not be enough by itself, so the practical step is to pair a parent's reach with a child enjoying the product.
+This matters here because most candidate creators are parents making UGC, so treat it as a caution and not a reason to change the format. Only personal-experience hooks hold after controls, and the testimonial and UGC gaps largely disappear without their biggest concepts. It doesn't show parent creators fail, and peer trust isn't something this file can measure. Keep the parent's voice and pair it with a child enjoying the product (see 'Follow-up checks').
 
 | Pattern | Metric | Concepts | In group | Rest | Without group's 3 largest | After controls | Grade |
 |---|---|---:|---:|---:|---:|---:|---|
@@ -83,9 +83,9 @@ Many ads end with no request at all. Asking costs nothing, so every brief should
 |---|---|---:|---:|---:|---:|---:|---|
 | cta_type = buy_now | cvr | 41 | 3.3% | 2.2% | 3.1% | +32%* | Directional |
 
-### Popular themes with no sales evidence
+### Popular themes: keep them as the reason to care, not the proof
 
-No evidence either way is different from evidence against. These may still work, but this file gives no reason to favour them. Several looked like winners only because LJ-004 carries those labels. Protein comes closest, but its lead falls away without its biggest concepts. Recipes and routines may suit a creator's style, but they aren't a sales argument by themselves, and the science-led route has no support here.
+No evidence either way is different from evidence against, so none of these should be dropped. The brand uses them widely, and growth, immunity and picky eating may well be why parents start looking. Several looked like winners only because LJ-004 carries those labels, and protein's lead falls away without its biggest concepts. So they don't work as the sales proof by themselves. In these ads they do better alongside a child enjoying the product (see 'Follow-up checks'). The science-led route has the least support.
 
 | Pattern | Metric | Concepts | In group | Rest | Without group's 3 largest | After controls | Grade |
 |---|---|---:|---:|---:|---:|---:|---|
@@ -95,6 +95,49 @@ No evidence either way is different from evidence against. These may still work,
 | hook_type = story_open | roas | 16 | 1.01 | 1.28 | 0.90 | -8% | Inconclusive |
 | persuasion = authority_science | roas | 18 | 0.94 | 1.35 | 1.08 | -29%* | Inconclusive |
 | narratives = kids_immunity | roas | 19 | 0.94 | 1.32 | 1.06 | -23% | Inconclusive |
+
+## Follow-up checks after the project owner's review
+
+The project owner cautioned that, in Indian parenting, peer validation builds trust and weak parent ads may reflect hooks or pacing rather than UGC, and that growth, immunity and picky eating are main buying triggers. That is category knowledge, which this file can't confirm or rule out. These checks test what the file can. They were chosen after seeing results and are ungraded, so they're leads, and groups overlap.
+
+### Is it weak hooks or pacing?
+
+| Group | Concepts | Hook rate | Hold rate | CVR | ROAS |
+|---|---:|---:|---:|---:|---:|
+| Parent-led | 47 | 32.7% | 25.6% | 2.4% | 1.04 |
+| Not parent-led | 30 | 30.6% | 24.0% | 3.3% | 1.47 |
+| Personal-experience hook | 24 | 33.0% | 21.2% | 2.0% | 0.97 |
+| Other hook drivers | 53 | 31.5% | 26.1% | 3.1% | 1.32 |
+| UGC | 23 | 32.6% | 26.3% | 2.2% | 0.90 |
+| Not UGC | 54 | 31.5% | 24.4% | 3.0% | 1.37 |
+| Parent-led, stronger hook | 24 | 36.7% | 25.2% | 2.0% | 0.88 |
+| Parent-led, weaker hook | 23 | 24.2% | 26.6% | 3.0% | 1.28 |
+| Parent-led, stronger hold | 24 | 33.6% | 28.9% | 2.6% | 1.05 |
+| Parent-led, weaker hold | 23 | 31.2% | 19.8% | 2.1% | 1.02 |
+
+Among parent-led concepts, rank correlation with CVR: hook rate -0.46, hold rate +0.19.
+
+Reading: weak hooks don't explain it here. Parent-led ads hook at least as well as others, and those with stronger hooks convert less. Pacing may play a part for personal-story hooks, which hold viewers less well, but better hold goes with only a small gain in parent-led CVR and none in ROAS.
+
+### Do these angles work when paired with a child enjoying the product?
+
+| Group | Concepts | Hook rate | Hold rate | CVR | ROAS |
+|---|---:|---:|---:|---:|---:|
+| Picky eating, with a child enjoying | 11 | 29.5% | 26.6% | 3.5% | 1.65 |
+| Picky eating, without | 15 | 36.3% | 27.9% | 2.0% | 0.83 |
+| Recipe, with a child enjoying | 6 | 36.2% | 21.5% | 3.0% | 1.78 |
+| Recipe, without | 18 | 35.3% | 27.1% | 2.0% | 0.82 |
+| Growth, with a child enjoying | 5 | 33.3% | 24.3% | 3.4% | 1.58 |
+| Growth, without | 36 | 31.9% | 22.9% | 2.3% | 0.93 |
+| Immunity, with a child enjoying | 2 | 31.1% | 25.1% | 2.3% | 1.22 |
+| Immunity, without | 17 | 28.7% | 22.6% | 2.3% | 0.93 |
+| Science-led, with a child enjoying | 1 | 27.5% | 21.3% | 4.0% | 1.46 |
+| Science-led, without | 17 | 28.2% | 23.8% | 2.4% | 0.87 |
+| Parent-led, with a child enjoying | 10 | 31.6% | 25.3% | 2.8% | 1.35 |
+| Parent-led, without | 37 | 32.9% | 25.6% | 2.3% | 0.97 |
+
+Reading: in this file, picky eating, recipes, growth and parent-led ads all do better when paired with a child enjoying the product. Immunity and science have too few such ads to tell. A few large ads sit behind several of these groups, and pairing was never tested on purpose, so the first campaign should test it.
+
 
 ## Where the money went
 
