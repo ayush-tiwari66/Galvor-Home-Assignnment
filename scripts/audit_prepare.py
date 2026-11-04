@@ -1,6 +1,7 @@
 """Choose the ad sample for the label audit, download the videos and build one frame sheet per ad.
 
 Run with: uv run --group audit python scripts/audit_prepare.py
+Add ad IDs after the command to build sheets for just those ads.
 
 The sample is fixed in advance so it can't drift towards ads that happen to agree with the labels:
 the two ads that distort the totals, the four next-largest by spend, then 14 chosen at random from the rest.
@@ -8,6 +9,7 @@ the two ads that distort the totals, the four next-largest by spend, then 14 cho
 from __future__ import annotations
 
 import subprocess
+import sys
 import tempfile
 import urllib.request
 from pathlib import Path
@@ -66,9 +68,18 @@ def build_sheet(video: Path, duration: float, ad_id: str, target: Path) -> None:
 
 def main() -> None:
     ads = clean.clean_all(ingest.load_raw()).ads
-    sample = choose_sample(ads)
     VIDEO_DIR.mkdir(parents=True, exist_ok=True)
     SHEET_DIR.mkdir(parents=True, exist_ok=True)
+    named = sys.argv[1:]
+    if named:  # targeted re-checks: build sheets for these ads and leave the fixed audit sample alone
+        for row in ads[ads.ad_id.isin(named)].itertuples():
+            video = VIDEO_DIR / f"{row.ad_id}.mp4"
+            if not video.exists():
+                urllib.request.urlretrieve(row.video_url, video)
+            build_sheet(video, row.duration_s, row.ad_id, SHEET_DIR / f"{row.ad_id}.jpg")
+            print(row.ad_id)
+        return
+    sample = choose_sample(ads)
     sample[["ad_id", "reason"]].to_csv(config.AUDIT_DIR / "audit_sample.csv", index=False)
     for row in sample.itertuples():
         video = VIDEO_DIR / f"{row.ad_id}.mp4"

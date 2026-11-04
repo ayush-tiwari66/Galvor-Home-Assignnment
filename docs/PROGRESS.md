@@ -2,8 +2,8 @@
 
 | Milestone | Status |
 |---|---|
-| M1 Foundation: repo, ingest, validation, cleaning, label audit | Done, awaiting review |
-| M2 Ad intelligence | Not started |
+| M1 Foundation: repo, ingest, validation, cleaning, label audit | Done |
+| M2 Ad intelligence | Done, awaiting review |
 | M3 Creator features | Not started |
 | M4 Gates, scoring, sensitivity | Not started |
 | M5 Briefs and validator | Not started |
@@ -23,18 +23,33 @@
 | LJ-089 treated as missing | 1.59 |
 | LJ-089 and LJ-004 both left out | 1.23 |
 
-## Carried into M2
+## M2 results (4 Nov 2026)
 
-- **Re-read all 8 ads labelled `child_led` against the videos.** One of the 4 audited was wrong (LJ-060 is a silent film), and child-led is one of the most promising sales signals.
-- Analyse by `creative_id`, so repeated videos aren't counted as independent.
-- Keep moms' and teen ads out of the kids' patterns, and show product mix beside each finding.
-- 32 ads, with 9.7% of spend, have fewer than 30 purchases. Don't read them alone.
+- **Tests:** 115 pass.
+- **Scope:** 91 kids' ads grouped into 78 concepts, so that near-copies count once. 553 comparisons across 111 patterns ([report](../outputs/ad_patterns.md), [all results](../outputs/ad_patterns.csv)).
+- **Grades:** 0 Supported, 53 Directional, 500 Inconclusive. The rules were fixed before results and weren't loosened. 57 comparisons fell below p = 0.05 where about 28 would be chance, so there is real signal, but nothing is firmly established.
+- **Child-led:** the re-check confirmed 7 of 8 labels. With LJ-004 aside and near-copies grouped, only 4 concepts remain, too few to test.
+
+| What the ads suggest | Evidence |
+|---|---|
+| Show a child visibly enjoying the product | Strongest sales signal; holds without the biggest concepts and after controls |
+| A child in the first 3 seconds wins attention, not purchases | Closest to the top grade |
+| End with a clear ask | Holds after controls; may be overstated |
+| A parent's personal story alone may sell less well | Caution only |
+| Recipes, routines, protein, immunity and science aren't sales arguments by themselves | No evidence for them once LJ-004 is set aside |
+
+These are associations in synthetic data, not proof of cause.
 
 ## Carried into M3
+
+- Score creative fit on what the ads support: can this creator naturally show a child enjoying the product? Reward that, not recipes or routines alone.
+- Don't penalise Hinglish. Don't favour a creator for attention alone, or for doctor-style authority.
+- `foodies_by_neha` was on the early contender list, but shows no children on camera and recipes aren't a proven sales argument. Let the scoring decide.
+- Charts move to M6, when the report and app are built.
 
 - Audit creator post labels against captions and transcripts, especially `child_ages`, `is_sponsored` and `brands_visible`.
 - The `0-2` child age band can't separate under-2s from 2-year-olds. Check before applying the product-age gate.
 
 ## Open decisions (defaults in use)
 
-See section 10 of [PROJECT_UNDERSTANDING.md](../PROJECT_UNDERSTANDING.md). Decided: briefs will be drafted with Gemini, and the key goes in a local `.env`. Still needed: a human spot-check of the AI-recorded label audit.
+See section 10 of [PROJECT_UNDERSTANDING.md](../PROJECT_UNDERSTANDING.md). Decided: briefs will be drafted with Gemini, and the key goes in a local `.env`. All work stays on `main`. The project owner spot-checked 6 audit verdicts on 4 Nov and agreed with all of them.

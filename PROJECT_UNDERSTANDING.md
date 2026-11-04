@@ -1,10 +1,10 @@
 # Project Understanding: Little Joys Creator Selection
 
-**Status:** Plan of record. Milestone 1 is finished and awaiting review; see [docs/PROGRESS.md](docs/PROGRESS.md).
+**Status:** Plan of record. Milestones 1 and 2 are finished, and M2 is awaiting review; see [docs/PROGRESS.md](docs/PROGRESS.md).
 **Date:** 4 Nov 2026
 **Data source:** `little-joys-data.zip`. Its five files are byte-identical to the `little-joys-data/` folder in this repo.
 
-**How to read the numbers.** Everything labelled *Observed* comes from profiling the actual files. Data-quality figures have been rechecked with the tested code from Milestone 1. The pattern tests in section 4.1 are still exploratory and get redone in Milestone 2. Anything labelled *Hypothesis* is untested. All ad performance figures are made up for this exercise and must never be described as Little Joys' real results.
+**How to read the numbers.** Everything labelled *Observed* comes from profiling the actual files. Data-quality figures have been rechecked with the tested code from Milestone 1. The pattern tests in section 4.1 are the exploratory first pass, replaced by Milestone 2's results. Anything labelled *Hypothesis* is untested. All ad performance figures are made up for this exercise and must never be described as Little Joys' real results.
 
 ---
 
@@ -13,7 +13,7 @@
 1. **The data never links a creator to a sale, with one tiny exception.** `ads.csv` has no creator column. Only one ad could be tied to a listed creator from its text: LJ-039 shows "Foodies by Neha, Kid's School Tiffin Recipe Episode-194". It had ₹3,101 of spend and 7 purchases, which is too small to mean anything. So any creator score estimates *fit*. It does not predict sales, and the report must say so plainly.
 2. **One ad dominates the totals and one looks broken.** LJ-004 has 9.1% of spend but 28.9% of purchases and 30.3% of revenue (ROAS 5.00). LJ-089 spent ₹4,26,568, got 29,449 clicks and 1,544 add-to-carts, and recorded **zero** purchases. Across the file about a third of add-to-carts become purchases, so that zero looks like a tracking failure. It does not look like real demand.
 3. **Those two ads create or destroy most of the headline "winners".** `story_open` falls from ROAS 1.93 to 0.92 without them, `routine_integration` from 2.34 to 1.15, and `family_skit` rises from 0.46 to 0.93.
-4. **The same video can differ by 1.6x in ROAS.** Three videos each run as two ads with identical labels. This gives a rough measure of noise: gaps smaller than about 1.6x between individual ads may be noise alone.
+4. **Near-copies of one ad can differ by up to 3x in ROAS.** Three videos each run as two ads with identical labels, differing by up to 1.6x. M2 also found re-cuts and translations, and one such pair differs by 3.1x. Gaps of this size between individual ads may not reflect any real creative difference.
 5. **What grabs attention is not what sells.** Hook rate and purchase conversion are slightly *negatively* related. A child in the first 3 seconds lifts hook rate by 8.5 points with no change in conversion. Meta's spend follows attention (spend vs hook rate +0.38) and not return (spend vs ROAS 0.00).
 6. **The accounts with the most reach are risky picks.** The three largest by plays are a comedian with no children on camera (`thatkushalmistry`), a child account with a recent Gritzo post (`sia_3vedi`) and a child account whose audience is 70.1% men (`storiesbyvihaa`). Separately, six creators mostly show children under 2, younger than any age the ads claim (see section 3.4).
 
@@ -210,6 +210,8 @@ Real audience data exists for three creators only:
 5. **Control for the obvious confounders:** product, language and spend level, in a simple regression as a check, not as the headline.
 6. **Grade every finding:** *Supported*, *Directional* or *Inconclusive*, with supporting ad IDs. About 35 labels with many levels means false positives are guaranteed if we just look for winners.
 
+**Superseded by Milestone 2.** The table below is the first exploratory pass, kept as a record. It didn't group near-copies or test all patterns, and several readings changed. Use [outputs/ad_patterns.md](outputs/ad_patterns.md) instead.
+
 **First-pass signal (Observed, exploratory).** 21 labels were tested on 3 metrics, chosen after seeing the data, so these p-values are optimistic. Without LJ-004 and LJ-089:
 
 | Pattern | n | Attention (hook) | Conversion (CVR) | ROAS | Preliminary read |
@@ -381,7 +383,7 @@ These are untested, and each could be wrong.
 
 | Risk | Mitigation |
 |---|---|
-| Over-reading noise | Grading system, the 1.6x duplicate-video noise check, no winners from small n |
+| Over-reading noise | Grading system, near-copies counted once, no winners from small n |
 | The scoring looks more precise than it is | Report top-5 frequency and confidence; avoid decimal-point rankings |
 | My own errors in analysis (one script bug was already caught during profiling) | Tests on metric and scoring functions; hand-check key numbers against the raw files |
 | LLM invents claims or citations | Evidence packs, fixed schema, validator, human review |

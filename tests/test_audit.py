@@ -36,6 +36,19 @@ def test_product_audit_matches_the_map_except_corrected_rows(records, data):
         assert products[row.ad_id] == row.system_value, row.ad_id
 
 
+def test_spot_check_matches_the_recorded_verdicts(records):
+    recorded = records.set_index(["ad_id", "label"]).verdict
+    for key, verdict in audit.HUMAN_SPOT_CHECK.items():
+        assert recorded[key] == verdict, key
+
+
+def test_report_states_the_limits_of_the_spot_check(records, tmp_path):
+    audit.write_report(records, tmp_path)
+    report = (tmp_path / "label_audit.md").read_text(encoding="utf-8")
+    assert "reviewed 6 of the verdicts" in report
+    assert "not an independent error rate" in report
+
+
 def test_correction_from_audit_is_applied(data):
     assert data.ads.set_index("ad_id")["product"]["LJ-038"] == "nutrimix_2plus"
 

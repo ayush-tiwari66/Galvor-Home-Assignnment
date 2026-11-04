@@ -1,0 +1,27 @@
+ad_id,concept_id,basis
+LJ-003,spreads_school_skit,Same video file
+LJ-059,spreads_school_skit,Same video file
+LJ-006,proteinmix_waffle_boy,Same boy and script; speech 94% identical
+LJ-097,proteinmix_waffle_boy,Same boy and script; speech 94% identical
+LJ-008,nutrimix_bone_animation,Same animated series; 3 shared shots
+LJ-078,nutrimix_bone_animation,Same animated series; 3 shared shots
+LJ-018,pancake_mix_kitchen_demo,Same shoot and presenter; 4 shared shots
+LJ-079,pancake_mix_kitchen_demo,Same shoot and presenter; 4 shared shots
+LJ-019,nutrimix_calcium_signs,Same on-screen script in Kannada and English; no speech
+LJ-091,nutrimix_calcium_signs,Same on-screen script in Kannada and English; no speech
+LJ-031,gummies_look_what_i_have_skit,Same skit; speech 73% identical; 4 shared shots
+LJ-032,gummies_look_what_i_have_skit,Same skit; speech 73% identical; 4 shared shots
+LJ-033,nutrimix_label_table,Same script in English and Punjabi
+LJ-057,nutrimix_label_table,Same script in English and Punjabi
+LJ-092,nutrimix_label_table,Same script in English and Punjabi
+LJ-035,nutrimix_kids_milkshake_voxpop,Same footage in Hindi and English; 5 shared shots
+LJ-055,nutrimix_kids_milkshake_voxpop,Same footage in Hindi and English; 5 shared shots
+LJ-036,proteinmix_pancake_taste_test,Same video file for LJ-036 and LJ-056; LJ-071 is the Hindi version with 5 shared shots
+LJ-056,proteinmix_pancake_taste_test,Same video file for LJ-036 and LJ-056; LJ-071 is the Hindi version with 5 shared shots
+LJ-071,proteinmix_pancake_taste_test,Same video file for LJ-036 and LJ-056; LJ-071 is the Hindi version with 5 shared shots
+LJ-050,nutrimix_batman_boy_protein,Same boy and set with a related script; 2 shared shots
+LJ-081,nutrimix_batman_boy_protein,Same boy and set with a related script; 2 shared shots
+LJ-061,proteinmix_three_myths,LJ-100 reuses the third myth from LJ-061; 1 shared shot
+LJ-100,proteinmix_three_myths,LJ-100 reuses the third myth from LJ-061; 1 shared shot
+LJ-073,moms_gummies_vitamins,Same video file
+LJ-093,moms_gummies_vitamins,Same video file

@@ -5,8 +5,10 @@ Answers one question for Little Joys' marketing manager: which 5 of 20 creators 
 ## Commands
 - `uv sync --all-groups`: install
 - `uv run pytest -q`: run tests
-- `uv run python -m lj.pipeline`: validate and clean the data, write reports to `outputs/`
+- `uv run python -m lj.pipeline`: validate and clean the data, analyse ads, write reports to `outputs/`
 - `uv run python -m lj.audit`: rebuild the label audit summary
+
+Keep all work on the `main` branch.
 
 ## Rules
 - **Work in milestones.** Finish one, show real outputs and test results, then stop for the user's review. The user makes the final decisions.
@@ -22,6 +24,7 @@ Answers one question for Little Joys' marketing manager: which 5 of 20 creators 
 - Don't use these columns: post `language` (83% wrong in our check), `audience_read` (no evidence behind it), `product_form` (use the product map), `people_on_screen` (contradictory), `audience_signal` as a stand-in for demographics.
 - LJ-089's purchases and revenue are treated as missing. LJ-004 is always reported with and without.
 - Group metrics come from `metrics.pooled_metrics`, so rows with missing values drop out of both sides of a ratio.
+- Near-copies of an ad count once: analyse by `concept_id` (`data/overrides/ad_concepts.csv`), not by ad.
 - Thresholds live in `src/lj/config.py`. Row-level changes go in the cleaning log.
 
 ## Code

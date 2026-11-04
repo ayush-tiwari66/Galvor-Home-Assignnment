@@ -2,7 +2,7 @@
 
 **Sample:** 20 of 97 distinct videos, fixed in advance: 2 ads that distort the totals, the next 4 by spend, and 14 at random (`data/audit/audit_sample.csv`).
 
-**Method:** Claude, the AI assistant used on this project, compared six frames per video (three from the first 3 seconds, three across the rest) plus the transcript with the system's labels. No person has reviewed these verdicts yet, and no audio was heard. The sample is too small to estimate error rates precisely, so the intervals below are wide.
+**Method:** Claude, the AI assistant used on this project, compared six frames per video (three from the first 3 seconds, three across the rest) plus the transcript with the system's labels, without hearing audio. The project owner then reviewed 6 of the verdicts (see below); the rest have had no human check. The sample is too small to estimate error rates precisely, so the intervals below are wide.
 
 | Label | Agree | Disagree | Can't tell | Agreement (decided ads) | 95% interval | Decision |
 |---|---:|---:|---:|---:|---|---|
@@ -28,3 +28,16 @@
 | LJ-064 | `ad_format` | explainer_to_camera | Presenter looks away from camera over product shots; voiceover_montage fits better |
 | LJ-084 | `ad_format` | explainer_to_camera | Staged two-person conversation; the matching LJ-052 setup is labelled skit |
 | LJ-097 | `product_form` | milk_mix_powder | End card reads Proteinmix; on-screen DIY Quick Proteinmix Waffles |
+
+## Human spot-check
+
+On 4 Nov 2026 the project owner reviewed these 6 verdicts against the frame sheets and agreed with all of them. Claude chose them rather than sampling at random, so this is a sense check of the harder calls. It is not an independent error rate, and it covers 6 of 180 verdicts.
+
+| Ad | Label | Claude's verdict | Reviewer |
+|---|---|---|---|
+| LJ-060 | `ad_format` | disagree | Agreed |
+| LJ-084 | `ad_format` | disagree | Agreed |
+| LJ-064 | `ad_format` | disagree | Agreed |
+| LJ-004 | `product_form` | disagree | Agreed |
+| LJ-042 | `ad_format` | agree | Agreed |
+| LJ-089 | `ad_format` | agree | Agreed |

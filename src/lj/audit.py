@@ -23,6 +23,17 @@ USE_DECISION = {
     "product": "Use. This is our own map; the one error found was corrected.",
 }
 
+# Verdicts the project owner reviewed against the frame sheets on 4 Nov 2026, and agreed with.
+# Chosen by Claude, not at random: 4 disagreements worth a second opinion, plus 2 agreements.
+HUMAN_SPOT_CHECK = {
+    ("LJ-060", "ad_format"): "disagree",
+    ("LJ-084", "ad_format"): "disagree",
+    ("LJ-064", "ad_format"): "disagree",
+    ("LJ-004", "product_form"): "disagree",
+    ("LJ-042", "ad_format"): "agree",
+    ("LJ-089", "ad_format"): "agree",
+}
+
 
 def wilson_interval(successes: int, total: int, z: float = 1.96) -> tuple[float, float]:
     """95% interval for a proportion, chosen because it behaves sensibly at small n and near 100%."""
@@ -59,9 +70,9 @@ def write_report(audit: pd.DataFrame, folder: Path = config.OUTPUTS_DIR) -> None
         f"**Sample:** {audit.ad_id.nunique()} of 97 distinct videos, fixed in advance: 2 ads that distort the totals, "
         "the next 4 by spend, and 14 at random (`data/audit/audit_sample.csv`).", "",
         "**Method:** Claude, the AI assistant used on this project, compared six frames per video (three from the first "
-        "3 seconds, three across the rest) plus the transcript with the system's labels. No person has reviewed these "
-        "verdicts yet, and no audio was heard. The sample is too small to estimate error rates precisely, so the "
-        "intervals below are wide.", "",
+        "3 seconds, three across the rest) plus the transcript with the system's labels, without hearing audio. "
+        f"The project owner then reviewed {len(HUMAN_SPOT_CHECK)} of the verdicts (see below); the rest have had no human "
+        "check. The sample is too small to estimate error rates precisely, so the intervals below are wide.", "",
         "| Label | Agree | Disagree | Can't tell | Agreement (decided ads) | 95% interval | Decision |",
         "|---|---:|---:|---:|---:|---|---|",
     ]
@@ -70,6 +81,12 @@ def write_report(audit: pd.DataFrame, folder: Path = config.OUTPUTS_DIR) -> None
     lines += ["", "## Disagreements", "", "| Ad | Label | System value | Finding |", "|---|---|---|---|"]
     for r in audit[audit.verdict == "disagree"].itertuples():
         lines.append(f"| {r.ad_id} | `{r.label}` | {r.system_value} | {r.note} |")
+    lines += ["", "## Human spot-check", "",
+              f"On 4 Nov 2026 the project owner reviewed these {len(HUMAN_SPOT_CHECK)} verdicts against the frame sheets and "
+              "agreed with all of them. Claude chose them rather than sampling at random, so this is a sense check of the "
+              f"harder calls. It is not an independent error rate, and it covers {len(HUMAN_SPOT_CHECK)} of {len(audit)} verdicts.", "",
+              "| Ad | Label | Claude's verdict | Reviewer |", "|---|---|---|---|"]
+    lines += [f"| {ad_id} | `{label}` | {verdict} | Agreed |" for (ad_id, label), verdict in HUMAN_SPOT_CHECK.items()]
     folder.mkdir(parents=True, exist_ok=True)
     (folder / "label_audit.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
 

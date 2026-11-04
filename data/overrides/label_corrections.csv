@@ -1,0 +1,6 @@
+ad_id,label,system_value,corrected,basis
+LJ-060,ad_format,child_led,silent_brand_film,Label audit and child-led re-check: polished film with no speech
+LJ-060,creator_type,child_presenter,silent_model,Child-led re-check: child is a silent model and presents nothing
+LJ-064,ad_format,explainer_to_camera,voiceover_montage,Label audit: presenter looks away from camera over product shots
+LJ-065,creator_type,child_presenter,silent_model,Denser frames: silent film where a child appears only at the end
+LJ-084,ad_format,explainer_to_camera,skit,Label audit: staged two-person conversation; the matching LJ-052 setup is labelled skit
