@@ -1,0 +1,64 @@
+table,row,column,old,new,rule
+ads,LJ-089,purchases,0,missing,zero purchases on 1544 add-to-carts: treated as a tracking failure
+ads,LJ-089,revenue_inr,0,missing,zero purchases on 1544 add-to-carts: treated as a tracking failure
+posts,https://www.instagram.com/p/DeXNukujRGG/,likes,3,missing,very low like count: hidden by the account
+posts,https://www.instagram.com/p/DbvtG9lj1V2/,likes,3,missing,very low like count: hidden by the account
+posts,https://www.instagram.com/p/DUv0C3dEmzb/,likes,3,missing,very low like count: hidden by the account
+posts,https://www.instagram.com/p/DMf0ZQfTd1I/,likes,3,missing,very low like count: hidden by the account
+posts,https://www.instagram.com/p/DeMOhX3pgdd/,likes,3,missing,very low like count: hidden by the account
+posts,https://www.instagram.com/p/DeG95-KpTbD/,likes,3,missing,very low like count: hidden by the account
+posts,https://www.instagram.com/p/Dd6o9EOy3wB/,likes,3,missing,very low like count: hidden by the account
+posts,https://www.instagram.com/p/DdY8KmoSheP/,likes,3,missing,very low like count: hidden by the account
+posts,https://www.instagram.com/p/DdRQUSZsonA/,likes,3,missing,very low like count: hidden by the account
+posts,https://www.instagram.com/p/DcLKACcx519/,likes,3,missing,very low like count: hidden by the account
+posts,https://www.instagram.com/p/DeXNukujRGG/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/DeWa2hIEoYZ/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/DeNCeuek0mY/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/DeE1gIrklNB/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/Dd_RpFZEiOf/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/Dd8-7djEq0c/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/Dd6qnFFEgLm/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/Dc-Z6Z1kllJ/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/Dd89vfMiUOQ/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/Dd8IdO_iXH_/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/CaoWmjoteF8/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/Dd8H6VElNPG/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/Dd7BcBHDKkr/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/DcMIgMij-rG/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/DbvtG9lj1V2/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/DUv0C3dEmzb/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/DS5PwLxEs6c/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/DO6UfPqDJKf/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/DMf0ZQfTd1I/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/DLz_ngfMOfH/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/DKAKY4sMZHS/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/DHY8CvTsFmW/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/DdddOY0oBr2/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/Dbl03zIk0od/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/DdOlncZK61z/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/DdCVluikjlL/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/DcgWhl6lFK7/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/DcaYwaKKlfe/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/DcC_m8oFIJR/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/DeJgaqbuf3U/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/DdrIpN9lEFc/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/DbTDOasGmJ6/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/DbA6TJZjbad/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/DeMOhX3pgdd/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/Dd6o9EOy3wB/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/DetPrJnDa9Y/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/DeR_qKAk8IB/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/Dd-0OxyxQCI/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/Dd0tk2Kx7bD/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/Ddtp_I6KvYg/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/DdtBOkkxVQA/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/Ddl41CTKKbK/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/Dbi_GaOE1N3/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/DeGV8rmAWpA/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/DdtV8W-gZiQ/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/DdnYSLZAZt3/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/DdRMTzNgd0X/,reshares,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/DeXAMumTZgD/,comments,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/DdrIpN9lEFc/,comments,0,missing,zero at scale or without play count: treated as unavailable
+posts,https://www.instagram.com/p/DeM24o1yzmV/,transcript_language,"Hinglish (Ayu, listen. Shall we go to th",Hinglish,repaired language value
+posts,https://www.instagram.com/p/DUv0C3dEmzb/,transcript_language,English,,repaired language value

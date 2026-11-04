@@ -1,0 +1,25 @@
+[project]
+name = "little-joys-creators"
+version = "0.1.0"
+description = "Evidence-based creator selection and briefs for Little Joys (Galvor take-home)"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "pandas>=2.2",
+    "numpy>=1.26",
+]
+
+[dependency-groups]
+dev = ["pytest>=8"]
+audit = ["imageio-ffmpeg>=0.5", "pillow>=10"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/lj"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

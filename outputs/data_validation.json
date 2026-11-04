@@ -1,0 +1,469 @@
+[
+  {
+    "name": "required columns present",
+    "dataset": "ads",
+    "severity": "error",
+    "passed": true,
+    "detail": "56 columns",
+    "rows": null
+  },
+  {
+    "name": "row count",
+    "dataset": "ads",
+    "severity": "error",
+    "passed": true,
+    "detail": "100 rows, expected 100",
+    "rows": null
+  },
+  {
+    "name": "no fully duplicated rows",
+    "dataset": "ads",
+    "severity": "error",
+    "passed": true,
+    "detail": "0 duplicates",
+    "rows": null
+  },
+  {
+    "name": "ad_id unique",
+    "dataset": "ads",
+    "severity": "error",
+    "passed": true,
+    "detail": "0 repeats",
+    "rows": null
+  },
+  {
+    "name": "meta_ad_library_id unique",
+    "dataset": "ads",
+    "severity": "error",
+    "passed": true,
+    "detail": "0 repeats",
+    "rows": null
+  },
+  {
+    "name": "required columns present",
+    "dataset": "creators",
+    "severity": "error",
+    "passed": true,
+    "detail": "21 columns",
+    "rows": null
+  },
+  {
+    "name": "row count",
+    "dataset": "creators",
+    "severity": "error",
+    "passed": true,
+    "detail": "20 rows, expected 20",
+    "rows": null
+  },
+  {
+    "name": "no fully duplicated rows",
+    "dataset": "creators",
+    "severity": "error",
+    "passed": true,
+    "detail": "0 duplicates",
+    "rows": null
+  },
+  {
+    "name": "handle unique",
+    "dataset": "creators",
+    "severity": "error",
+    "passed": true,
+    "detail": "0 repeats",
+    "rows": null
+  },
+  {
+    "name": "creator_id unique",
+    "dataset": "creators",
+    "severity": "error",
+    "passed": true,
+    "detail": "0 repeats",
+    "rows": null
+  },
+  {
+    "name": "required columns present",
+    "dataset": "posts",
+    "severity": "error",
+    "passed": true,
+    "detail": "32 columns",
+    "rows": null
+  },
+  {
+    "name": "row count",
+    "dataset": "posts",
+    "severity": "error",
+    "passed": true,
+    "detail": "392 rows, expected 392",
+    "rows": null
+  },
+  {
+    "name": "no fully duplicated rows",
+    "dataset": "posts",
+    "severity": "error",
+    "passed": true,
+    "detail": "0 duplicates",
+    "rows": null
+  },
+  {
+    "name": "post_url unique",
+    "dataset": "posts",
+    "severity": "error",
+    "passed": true,
+    "detail": "0 repeats",
+    "rows": null
+  },
+  {
+    "name": "required columns present",
+    "dataset": "audience",
+    "severity": "error",
+    "passed": true,
+    "detail": "10 columns",
+    "rows": null
+  },
+  {
+    "name": "row count",
+    "dataset": "audience",
+    "severity": "error",
+    "passed": true,
+    "detail": "3 rows, expected 3",
+    "rows": null
+  },
+  {
+    "name": "no fully duplicated rows",
+    "dataset": "audience",
+    "severity": "error",
+    "passed": true,
+    "detail": "0 duplicates",
+    "rows": null
+  },
+  {
+    "name": "handle unique",
+    "dataset": "audience",
+    "severity": "error",
+    "passed": true,
+    "detail": "0 repeats",
+    "rows": null
+  },
+  {
+    "name": "performance columns complete",
+    "dataset": "ads",
+    "severity": "error",
+    "passed": true,
+    "detail": "0 missing values",
+    "rows": null
+  },
+  {
+    "name": "no negative performance values",
+    "dataset": "ads",
+    "severity": "error",
+    "passed": true,
+    "detail": "0 rows",
+    "rows": null
+  },
+  {
+    "name": "video_3s_views <= impressions",
+    "dataset": "ads",
+    "severity": "error",
+    "passed": true,
+    "detail": "0 rows",
+    "rows": null
+  },
+  {
+    "name": "thruplays <= video_3s_views",
+    "dataset": "ads",
+    "severity": "error",
+    "passed": true,
+    "detail": "0 rows",
+    "rows": null
+  },
+  {
+    "name": "link_clicks <= impressions",
+    "dataset": "ads",
+    "severity": "error",
+    "passed": true,
+    "detail": "0 rows",
+    "rows": null
+  },
+  {
+    "name": "add_to_carts <= link_clicks",
+    "dataset": "ads",
+    "severity": "error",
+    "passed": true,
+    "detail": "0 rows",
+    "rows": null
+  },
+  {
+    "name": "purchases <= add_to_carts",
+    "dataset": "ads",
+    "severity": "error",
+    "passed": true,
+    "detail": "0 rows",
+    "rows": null
+  },
+  {
+    "name": "spend and impressions above zero",
+    "dataset": "ads",
+    "severity": "error",
+    "passed": true,
+    "detail": "0 rows",
+    "rows": null
+  },
+  {
+    "name": "revenue is zero exactly when purchases are zero",
+    "dataset": "ads",
+    "severity": "error",
+    "passed": true,
+    "detail": "0 rows",
+    "rows": null
+  },
+  {
+    "name": "launch dates parse",
+    "dataset": "ads",
+    "severity": "error",
+    "passed": true,
+    "detail": "0 unparsed",
+    "rows": null
+  },
+  {
+    "name": "stop is not before launch",
+    "dataset": "ads",
+    "severity": "error",
+    "passed": true,
+    "detail": "0 rows",
+    "rows": null
+  },
+  {
+    "name": "stop is not after the as-of date",
+    "dataset": "ads",
+    "severity": "error",
+    "passed": true,
+    "detail": "0 rows",
+    "rows": null
+  },
+  {
+    "name": "some ads still live (README: blank stopped_date)",
+    "dataset": "ads",
+    "severity": "warning",
+    "passed": false,
+    "detail": "0 blanks; 8 distinct stop dates, latest 2026-10-23. Likely snapshot dates, so days_live is weak evidence.",
+    "rows": null
+  },
+  {
+    "name": "days_live equals stop minus launch",
+    "dataset": "ads",
+    "severity": "warning",
+    "passed": false,
+    "detail": "74 rows differ, by at most 1 day",
+    "rows": null
+  },
+  {
+    "name": "each ad is a distinct video",
+    "dataset": "ads",
+    "severity": "warning",
+    "passed": false,
+    "detail": "97 distinct videos in 100 ads",
+    "rows": [
+      "LJ-073",
+      "LJ-093",
+      "LJ-036",
+      "LJ-056",
+      "LJ-003",
+      "LJ-059"
+    ]
+  },
+  {
+    "name": "no zero-purchase ads with add-to-carts",
+    "dataset": "ads",
+    "severity": "warning",
+    "passed": false,
+    "detail": "reviewed by the tracking-failure rule in clean.py",
+    "rows": [
+      "LJ-054",
+      "LJ-089"
+    ]
+  },
+  {
+    "name": "brand timing absent when brand not said aloud",
+    "dataset": "ads",
+    "severity": "warning",
+    "passed": false,
+    "detail": "30 ads have both, so the two labels contradict",
+    "rows": null
+  },
+  {
+    "name": "no child on screen when no people on screen",
+    "dataset": "ads",
+    "severity": "warning",
+    "passed": false,
+    "detail": "5 contradictions",
+    "rows": [
+      "LJ-002",
+      "LJ-011",
+      "LJ-019",
+      "LJ-037",
+      "LJ-040"
+    ]
+  },
+  {
+    "name": "no named creator type when no people on screen",
+    "dataset": "ads",
+    "severity": "warning",
+    "passed": false,
+    "detail": "10 contradictions",
+    "rows": [
+      "LJ-010",
+      "LJ-017",
+      "LJ-022",
+      "LJ-043",
+      "LJ-054",
+      "LJ-063",
+      "LJ-083",
+      "LJ-087",
+      "LJ-090",
+      "LJ-099"
+    ]
+  },
+  {
+    "name": "labels complete",
+    "dataset": "ads",
+    "severity": "warning",
+    "passed": false,
+    "detail": "blanks: {'hook_type': 2, 'ad_format': 2, 'story_structure': 2, 'child_role': 2, 'brand_first_said': 2, 'creator_age': 1}",
+    "rows": null
+  },
+  {
+    "name": "every post belongs to a known creator",
+    "dataset": "posts",
+    "severity": "error",
+    "passed": true,
+    "detail": "0 unknown handles",
+    "rows": null
+  },
+  {
+    "name": "every creator has posts",
+    "dataset": "creators",
+    "severity": "error",
+    "passed": true,
+    "detail": "0 without posts",
+    "rows": null
+  },
+  {
+    "name": "post creator_id matches creators.csv",
+    "dataset": "posts",
+    "severity": "error",
+    "passed": true,
+    "detail": "0 mismatches",
+    "rows": null
+  },
+  {
+    "name": "every audience row belongs to a known creator",
+    "dataset": "audience",
+    "severity": "error",
+    "passed": true,
+    "detail": "0 unknown handles",
+    "rows": null
+  },
+  {
+    "name": "posts_in_file matches actual count",
+    "dataset": "creators",
+    "severity": "error",
+    "passed": true,
+    "detail": "0 mismatches",
+    "rows": null
+  },
+  {
+    "name": "no negative engagement",
+    "dataset": "posts",
+    "severity": "error",
+    "passed": true,
+    "detail": "0 rows",
+    "rows": null
+  },
+  {
+    "name": "likes do not exceed plays",
+    "dataset": "posts",
+    "severity": "error",
+    "passed": true,
+    "detail": "0 rows",
+    "rows": null
+  },
+  {
+    "name": "post dates parse",
+    "dataset": "posts",
+    "severity": "error",
+    "passed": true,
+    "detail": "0 unparsed",
+    "rows": null
+  },
+  {
+    "name": "plays exist for all videos",
+    "dataset": "posts",
+    "severity": "error",
+    "passed": true,
+    "detail": "0 videos without plays",
+    "rows": null
+  },
+  {
+    "name": "audience gender shares sum to 100",
+    "dataset": "audience",
+    "severity": "error",
+    "passed": true,
+    "detail": "0 rows",
+    "rows": null
+  },
+  {
+    "name": "plays exist for all posts",
+    "dataset": "posts",
+    "severity": "warning",
+    "passed": false,
+    "detail": "39 non-video posts have no plays: unavailable, not zero",
+    "rows": null
+  },
+  {
+    "name": "each creator has about 20 posts",
+    "dataset": "creators",
+    "severity": "warning",
+    "passed": false,
+    "detail": "{'foodies_by_neha': 12}",
+    "rows": null
+  },
+  {
+    "name": "all posts within 365 days",
+    "dataset": "posts",
+    "severity": "warning",
+    "passed": false,
+    "detail": "18 older posts, the oldest from 2022-03-03",
+    "rows": null
+  },
+  {
+    "name": "audience measured on Instagram",
+    "dataset": "audience",
+    "severity": "warning",
+    "passed": false,
+    "detail": "['parentingtips_surat'] use another platform and cannot be compared directly",
+    "rows": null
+  },
+  {
+    "name": "transcript_language holds a language name",
+    "dataset": "posts",
+    "severity": "warning",
+    "passed": false,
+    "detail": "1 rows contain pasted text",
+    "rows": null
+  },
+  {
+    "name": "transcript_language only where a transcript exists",
+    "dataset": "posts",
+    "severity": "warning",
+    "passed": false,
+    "detail": "1 rows",
+    "rows": null
+  },
+  {
+    "name": "audience_read has comment evidence",
+    "dataset": "creators",
+    "severity": "warning",
+    "passed": false,
+    "detail": "20 of 20 report comment_evidence none, so the field is not used",
+    "rows": null
+  }
+]

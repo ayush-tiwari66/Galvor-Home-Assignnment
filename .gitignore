@@ -1,0 +1,30 @@
+# Raw assignment data: redistribution permission not confirmed. Never commit.
+little-joys-data/
+*.zip
+data/raw/
+data/processed/
+Galvor - Tech Intern Take-home Assignment.pdf
+
+# Audit working files (downloaded videos, extracted frames)
+data/audit/videos/
+data/audit/sheets/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
