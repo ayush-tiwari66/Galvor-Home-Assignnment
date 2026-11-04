@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import sys
 
-from lj import ads, clean, config, ingest, validate
+from lj import ads, clean, config, creators, ingest, validate
 
 
 def main() -> int:
@@ -24,7 +24,7 @@ def main() -> int:
     data.posts.to_csv(config.PROCESSED_DIR / "posts_clean.csv", index=False)
     data.log.to_csv(config.OUTPUTS_DIR / "cleaning_log.csv", index=False)
     print(f"Cleaning log: {len(data.log)} changes.")
-    return ads.main()
+    return ads.main() or creators.main()
 
 
 if __name__ == "__main__":

@@ -3,8 +3,8 @@
 | Milestone | Status |
 |---|---|
 | M1 Foundation: repo, ingest, validation, cleaning, label audit | Done |
-| M2 Ad intelligence | Done, awaiting review |
-| M3 Creator features | Not started |
+| M2 Ad intelligence | Done |
+| M3 Creator features | Done, awaiting review |
 | M4 Gates, scoring, sensitivity | Not started |
 | M5 Briefs and validator | Not started |
 | M6 Report and app | Not started |
@@ -43,14 +43,27 @@ These are associations in synthetic data, not proof of cause.
 
 **Owner review (4 Nov):** the project owner agreed with most points and cautioned against changing briefs on two: parent stories (peer trust) and growth, immunity and picky eating (main buying triggers). Follow-up checks are in the report. Outcome: no format or angle gets removed, parent voice stays, and the first campaign tests pairing.
 
-## Carried into M3
+## M3 results (4 Nov 2026)
+
+- **Tests:** 145 pass.
+- **Profiles:** all 20 creators, from posts within the last 365 days ([report](../outputs/creator_profiles.md), [data](../outputs/creator_features.csv), [brand list](../outputs/brand_relationships.csv)).
+- **Label checks from text:** 26 of 28 random sponsorship labels look right and 2 can't be told. Every kids' food or nutrition brand was read against its post.
+- **Direct kids' nutrition work:** 6 creators, all within the last 90 days: `couple_adishiv`, `doc_mama_and_babies`, `ekamichildcare`, `instamommy_suchi`, `raja_choudhary04`, `sia_3vedi`.
+- **Age evidence:** 5 feeds are mostly under the product's starting age. `the_mum_wife_playbook` needs its child's age confirmed.
+- **Limits:** posts are on Instagram, so these checks use captions, transcripts and labels, not video. Many posts state no age.
+
+## Carried into M4
 
 - Score creative fit on what the ads support: can this creator naturally show a child enjoying the product? Reward that, not recipes or routines alone.
 - Don't mark creators down for being parents or making UGC, or for covering growth, immunity or picky eating.
-- For M5: every brief uses a parent's voice or the creator's native format, with a category reason to care and a child enjoying the product as the proof. The test plan should compare a parent's story with and without that moment.
 - Don't penalise Hinglish. Don't favour a creator for attention alone, or for doctor-style authority.
+- **The competitor rule may decide the result.** 4 of the 5 creators who've shown a child with a food product are also the ones with direct competitor work (`the_mum_wife_playbook` is the exception), so run both scenarios and report the difference.
 - `foodies_by_neha` was on the early contender list, but shows no children on camera and recipes aren't a proven sales argument. Let the scoring decide.
-- Charts move to M6, when the report and app are built.
+
+## Carried into M5 and M6
+
+- Every brief uses a parent's voice or the creator's native format, with a category reason to care and a child enjoying the product as the proof. The test plan should compare a parent's story with and without that moment.
+- Charts are built in M6, with the report and app.
 
 - Audit creator post labels against captions and transcripts, especially `child_ages`, `is_sponsored` and `brands_visible`.
 - The `0-2` child age band can't separate under-2s from 2-year-olds. Check before applying the product-age gate.

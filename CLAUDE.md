@@ -5,7 +5,7 @@ Answers one question for Little Joys' marketing manager: which 5 of 20 creators 
 ## Commands
 - `uv sync --all-groups`: install
 - `uv run pytest -q`: run tests
-- `uv run python -m lj.pipeline`: validate and clean the data, analyse ads, write reports to `outputs/`
+- `uv run python -m lj.pipeline`: validate and clean the data, analyse ads, profile creators, write reports to `outputs/`
 - `uv run python -m lj.audit`: rebuild the label audit summary
 
 Keep all work on the `main` branch.

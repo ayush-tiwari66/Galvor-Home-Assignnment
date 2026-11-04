@@ -1,6 +1,6 @@
 # Project Understanding: Little Joys Creator Selection
 
-**Status:** Plan of record. Milestones 1 and 2 are finished, and M2 is awaiting review; see [docs/PROGRESS.md](docs/PROGRESS.md).
+**Status:** Plan of record. Milestones 1 to 3 are finished, and M3 is awaiting review; see [docs/PROGRESS.md](docs/PROGRESS.md).
 **Date:** 4 Nov 2026
 **Data source:** `little-joys-data.zip`. Its five files are byte-identical to the `little-joys-data/` folder in this repo.
 
@@ -103,7 +103,7 @@ Group figures sum numerators and denominators. They are always shown beside the 
 
 | Columns | Purpose | Trust and handling |
 |---|---|---|
-| `followers`, `following`, `total_posts`, `verified` | S | Facts, but `followers` predicts little (see 3.3). `verified` is not used in scoring |
+| `followers`, `following`, `total_posts`, `verified` | S | Facts. Followers track typical plays fairly closely (rank correlation 0.73) but say nothing about whether viewers are parents. `verified` is not used in scoring |
 | `persona`, `voice`, `themes`, `format_habits`, `catchphrases` | S, C | AI read of the feed. Used for brief tone, and checked against actual posts |
 | `language_use` | S, C | Sometimes contradicted by transcripts |
 | `what_feels_native`, `what_would_feel_foreign` | C | Useful for briefs, but partly boilerplate: 15 of 20 "foreign" fields mention studio production |
@@ -161,6 +161,8 @@ Group figures sum numerators and denominators. They are always shown beside the 
 | AI audience label failed a check | `storiesbyvihaa` posts say "families, parents", while the real audience is 70.1% men | Don't use `audience_signal` as a stand-in for demographics |
 
 ### 3.4 Creator fact sheet (Observed; not a ranking)
+
+**Superseded by Milestone 3.** Use [outputs/creator_profiles.md](outputs/creator_profiles.md), which has checked brand lists and child ages. For example, this early table misses Good Monk and Manna for `doc_mama_and_babies`.
 
 Posts within 365 days of 27 Oct 2026. Play medians are for videos only. Child ages are shares of AI labels and need audit.
 
@@ -429,6 +431,6 @@ These are untested, and each could be wrong.
 |---|---|---|---|
 | 1 | **App scope:** your 7 pages, or a smaller app? | **Report as the primary answer, plus a 4-page app** (Answer; All 20 creators and sensitivity; Briefs; Evidence and data, with exports). Galvor rewards plain and sound over polished, and a marketing manager won't run Python | 4 pages |
 | 2 | **LLM for briefs:** do you have a Gemini or OpenAI key? | **Decided: Gemini.** The key stays in a local `.env`, never in the repo | Gemini |
-| 3 | **Recent competitor work** (`sia_3vedi`, `raja_choudhary04`, `couple_adishiv`, `instamommy_suchi`): exclude or flag? | **Flag it and run both ways.** It's a brand decision and we can't see contract terms, but the report should say whether the five change | Flag, both scenarios |
+| 3 | **Recent competitor work** (`sia_3vedi`, `raja_choudhary04`, `couple_adishiv`, `instamommy_suchi`, `doc_mama_and_babies`, `ekamichildcare`): exclude or flag? | **Flag it and run both ways.** It's a brand decision and we can't see contract terms, but the report should say whether the five change | Flag, both scenarios |
 | 4 | **Existing Little Joys relationships** (`doc_mama_and_babies`, `storiesbyvihaa`, `foodies_by_neha`): are they eligible for "next"? | Eligible and flagged. Prior work with the brand isn't a negative. The brand knows the results; we don't | Eligible |
 | 5 | **Public repo vs data:** the assignment doesn't say whether the data can be republished | Keep raw data out and commit derived outputs. Worth one email to Galvor, since they invite questions | Not committed |

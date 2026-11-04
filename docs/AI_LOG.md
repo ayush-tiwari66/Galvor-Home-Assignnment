@@ -29,6 +29,9 @@ The project is built with Claude Code. This log records decisions made with AI a
 | Controlled model flipped a true +100% lift to -57% when a pattern matched a control | Followed up a statsmodels warning instead of ignoring it | Failing test first, then dropped redundant controls |
 | Controlled model reported significance on 98-100% of shuffled labels, where about 5% is correct | p-values of 0.0000 beside permutation p = 0.3 looked wrong, so ran a calibration check | Failing test first, then replaced with a weighted log regression that shows 3-6% |
 | Earlier tests passed despite that bug, because they only checked that real effects were found | Same calibration check | Added a test that the model stays quiet when no effect exists |
+| Competitor list missed Good Monk and Manna, because the first search used a fixed list of rival names | Read all 392 post summaries | Reviewed brand file, with a test that every row matches a real post |
+| Plan said followers "predict little"; rank correlation with plays is actually 0.73 | Checked the claim against the finished table | Corrected the plan |
+| Review text said a creator "has already sold Little Joys", with no sales data behind it | Re-read the review against the evidence | Reworded to "featured" |
 | Interpretation said a pattern missed "only narrowly" and called a format "the weakest", beyond what the data shows | Checked other random seeds and the without-largest-concepts column | Reworded; removed fear appeal evidence that didn't hold up |
 
 ## How AI output is checked

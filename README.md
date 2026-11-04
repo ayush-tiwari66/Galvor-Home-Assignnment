@@ -2,7 +2,7 @@
 
 A take-home project for Galvor. It uses Little Joys' 100 ads and 20 candidate creators to recommend five creators and what each should say. The goal is an answer the brand's marketing manager can follow and check.
 
-**Status:** in progress. Data validation, cleaning, the label audit and the ad analysis are done; see [docs/PROGRESS.md](docs/PROGRESS.md). The recommendation doesn't exist yet.
+**Status:** in progress. Data validation, cleaning, the label audit, the ad analysis and the creator profiles are done; see [docs/PROGRESS.md](docs/PROGRESS.md). The recommendation doesn't exist yet.
 
 All ad performance figures in the data are made up for the exercise and are not Little Joys' real results.
 
@@ -31,15 +31,18 @@ The pipeline stops if the zip's checksum doesn't match or a blocking data check 
 | [outputs/ad_patterns.md](outputs/ad_patterns.md) | Which ad patterns go with attention and sales, and how sure we are |
 | [outputs/ad_patterns.csv](outputs/ad_patterns.csv) | All 553 comparisons behind that report |
 | [outputs/ad_metrics.csv](outputs/ad_metrics.csv) | Cleaned performance metrics for each ad |
+| [outputs/creator_profiles.md](outputs/creator_profiles.md) | Evidence, strengths, weaknesses, risks and data gaps for all 20 creators |
+| [outputs/creator_features.csv](outputs/creator_features.csv) | The same creator metrics as a table |
+| [outputs/brand_relationships.csv](outputs/brand_relationships.csv) | Reviewed competitor and Little Joys relationships, with source posts |
 
 To repeat the label audit's frame extraction: `uv run --group audit python scripts/audit_prepare.py`. To repeat the near-copy search: `uv run --group audit python scripts/find_concepts.py`.
 
 ## Layout
 
 ```
-src/lj/          ingest, validate, metrics, clean, audit, ads, pipeline
+src/lj/          ingest, validate, metrics, clean, audit, ads, creators, pipeline
 tests/           pytest suite
-data/overrides/  reviewed product map, near-copy families, label corrections
+data/overrides/  reviewed product map, near-copy families, label corrections, brand relationships, creator review
 data/audit/      label audit sample, verdicts, re-checks, frame fingerprints
 outputs/         generated reports
 docs/            progress and AI usage log
