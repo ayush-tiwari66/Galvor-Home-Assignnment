@@ -5,8 +5,8 @@ description = "Evidence-based creator selection and briefs for Little Joys (Galv
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
 dependencies = [
-    "pandas>=2.2",
-    "numpy>=1.26",
+    "pandas>=2.2,<3.0.0",
+    "numpy>=1.26,<3.0.0",
     "statsmodels>=0.15.0",
 ]
 
