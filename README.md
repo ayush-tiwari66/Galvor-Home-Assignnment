@@ -2,7 +2,7 @@
 
 A take-home project for Galvor. It uses Little Joys' 100 ads and 20 candidate creators to recommend five creators and what each should say. The goal is an answer the brand's marketing manager can follow and check.
 
-**Start here:** [REPORT.md](REPORT.md) is the answer for the marketing manager. [docs/NOTE.md](docs/NOTE.md) is the one-page note on key choices and next steps. [docs/AI_LOG.md](docs/AI_LOG.md) records how AI was used and the mistakes caught.
+**Start here:** [REPORT.md](REPORT.md) is the answer for the marketing manager. [docs/NOTE.md](docs/NOTE.md) is the one-page note on key choices and next steps. 
 
 **The answer in one line:** `the_mum_wife_playbook`, `hello_ps8`, `ohmother.in`, `mumma_and_ridhu` and `foodies_by_neha`, each briefed to show a child visibly enjoying the product and to end with a clear ask. Each runs as a paid test with stop and scale rules. Call `sia_3vedi` and `raja_choudhary04` first: they fit best but posted for a competitor recently.
 
