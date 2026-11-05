@@ -1,0 +1,3 @@
+[client]
+# Hides Deploy, Rerun and Clear cache. app.py hides the remaining menu items except the theme choice.
+toolbarMode = "viewer"

@@ -1,0 +1,156 @@
+{
+  "_about": "Drafted by Claude in the working session from the evidence in outputs/ (creator posts, ad patterns, claims library), then reviewed. lj.briefs validates every brief before it is rendered. Free text holds no typed numbers: figures come from {placeholders} filled from outputs/creator_features.csv.",
+  "briefs": [
+    {
+      "handle": "the_mum_wife_playbook",
+      "product": "nutrimix_2plus",
+      "idea": "A playful mother-daughter skit in which Seerat keeps demanding \"woh wala doodh\" and visibly enjoys it, built on the repetitive back-and-forth humour the feed already runs on.",
+      "why": [
+        {"text": "Already shows their daughter enjoying a food product on camera, and child-parent comic dialogue is their native format.", "posts": ["DeYypNeTkm8", "DeJUa9bsS-K", "DeEGnivMrj_"]},
+        {"text": "Their daughter is in {child_post_share} of recent posts, so the child-enjoying moment won't feel staged.", "posts": ["Ddq6c6-Mbk3", "DeBNEtpMaw9"]},
+        {"text": "Paid posts don't lose the audience here: sponsored videos got {sponsored_vs_organic_plays} the plays of organic ones, and only {sponsored_share} of the feed is sponsored.", "posts": ["DeOEO3NThTK"]}
+      ],
+      "hook": "Seerat on screen in the first second, repeating her demand to Mumma, with a text overlay setting up the joke.",
+      "beats": [
+        "Seerat asks for \"woh wala doodh\" again and again; Mumma pretends not to understand. Keep it in their usual comic rhythm.",
+        "Mumma offers plain milk and Seerat pushes it away. This is the picky-milk problem, shown rather than explained.",
+        "Mumma stirs in Nutrimix. Seerat tastes it, reacts and drinks it down. Hold on this moment: it is the proof.",
+        "Mumma to camera, in their own words, says why they're comfortable giving it, using only approved claims.",
+        "Clear ask: tap the link to try it."
+      ],
+      "child_moment": "Seerat tastes the milk and enjoys it on camera. Let the reaction be real; don't give the child lines about nutrition.",
+      "reason_to_care": "Picky about plain milk",
+      "ask": "Buy now, through the link or the creator's code",
+      "tone": "Hinglish, handheld, natural home light, text overlays for the punchline.",
+      "avoid": ["Studio lighting or a TV-ad look", "Height, growth or immunity promises", "Saying 'no added sugar'"],
+      "claims": ["NM_INGREDIENTS", "NM_SWEET", "NM_FLAVOURS"],
+      "ads": ["LJ-095", "LJ-042", "LJ-035"],
+      "check_before_signing": [
+        "Confirm Seerat's age is two or over: captions only say 'toddler', and Nutrimix 2+ shouldn't be shown with a younger child.",
+        "Ask whether the October Epigamia kids' yogurt deal carries any category exclusivity.",
+        "Typical organic reach is small ({reach_plays} median plays), so plan paid amplification through a partnership ad from day one."
+      ]
+    },
+    {
+      "handle": "hello_ps8",
+      "product": "nutrimix_2plus",
+      "idea": "A warm montage of Vayu's day now that he has opinions about everything, with the milk moment at its centre, closing on the creator talking to camera from the car as they often do.",
+      "why": [
+        {"text": "Large, repeatable organic reach: a median of {reach_plays} plays per organic video, with no single post carrying the account.", "posts": ["DeJHEOByhNQ", "DdtrfP4S4Vu"]},
+        {"text": "Their son turned three in October, so the age fits Nutrimix 2+, and sentimental montages of him are what the feed is built on.", "posts": ["DeWa2hIEoYZ", "DeTkYohSUTu", "DeM24o1yzmV"]},
+        {"text": "Talking to camera from the car with their son beside them already does well.", "posts": ["Dd8WepfSvVG"]},
+        {"text": "No kids' food or nutrition deals in the sample, and only {sponsored_share} of the feed is sponsored.", "posts": ["DeRe8p0ydG-"]}
+      ],
+      "hook": "Vayu on screen straight away, with the overlay: he's three now, and he has opinions.",
+      "beats": [
+        "Quick montage of Vayu's day in the feed's bright, clean style.",
+        "At snack time he pushes plain milk away.",
+        "The creator mixes in Nutrimix. Vayu tastes it, reacts and asks for more. Give this moment room.",
+        "Back in the car, to camera: what they checked on the label, using approved claims only.",
+        "Clear ask, with the link in the caption and on screen."
+      ],
+      "child_moment": "Vayu tastes the milk and asks for more, filmed candidly.",
+      "reason_to_care": "Getting a choosy toddler to finish their milk",
+      "ask": "Buy now, through the link in the caption",
+      "tone": "Spoken Hinglish with English overlays. Warm, bright, sentimental, not salesy.",
+      "avoid": ["Letting the personal story run the whole video without the child's reaction and the ask", "Height, growth or immunity promises", "Saying 'no added sugar'"],
+      "claims": ["NM_INGREDIENTS", "NM_SWEET", "NM_FLAVOURS"],
+      "ads": ["LJ-042", "LJ-007", "LJ-095"],
+      "check_before_signing": [
+        "They have never shown food with their son, so the product moment is new. Ask for a short test clip or a past example before committing.",
+        "Ask for an Instagram audience screenshot (share of women, ages, cities): we have no audience data for this creator.",
+        "The profile says English but the spoken content is Hinglish and Hindi, so script in Hinglish."
+      ]
+    },
+    {
+      "handle": "ohmother.in",
+      "product": "nutrimix_7plus",
+      "idea": "The creator's signature school-morning routine, time-stamped as usual, with Nutrimix milk as the breakfast step the kids actually finish.",
+      "why": [
+        {"text": "School-morning routines with the children are the feed's most reliable organic format, and several have reached well beyond its usual audience.", "posts": ["DXtcPVSjX2h", "Dcx674kTXJH", "DcIu4fTIpau", "DeZh3GqoLZM"]},
+        {"text": "Has already filmed feeding the children at home, with a child asking for food on camera.", "posts": ["DeRBAZvNScx"]},
+        {"text": "The older child is school age, which fits Nutrimix 7+, and both children appear in {child_post_share} of recent posts.", "posts": ["DeTkYL0Ic3o", "DeLvwV4ILjC"]}
+      ],
+      "hook": "Kids on screen from the first frame, with the time-stamp overlay the audience knows from this feed.",
+      "beats": [
+        "Time-stamped morning chaos: alarms, uniforms, hair.",
+        "Breakfast: the older child usually leaves their milk.",
+        "Nutrimix chocolate goes into the milk. The child drinks it and reacts before running for the bus. Let it play out.",
+        "Fast, playful voiceover on why it makes the morning easier, using approved claims only.",
+        "Clear ask at the end."
+      ],
+      "child_moment": "The older child drinks the milk at the breakfast table and enjoys it, filmed as part of the routine.",
+      "reason_to_care": "Busy school mornings and breakfast that gets left unfinished",
+      "ask": "Buy now, through the link or the creator's code",
+      "tone": "Mostly English with the creator's natural Hinglish asides. Handheld, fast, warm.",
+      "avoid": ["Studio set-ups or a scripted sales pitch", "Height, growth or immunity promises", "The 'as much protein as two eggs' comparison"],
+      "claims": ["NM_INGREDIENTS", "NM_SWEET", "NM7_PROTEIN"],
+      "ads": ["LJ-050", "LJ-009"],
+      "check_before_signing": [
+        "The bio links one.science.nutrition.in, an adult protein brand they promoted in October. Confirm it's not their own brand and that there's no conflict.",
+        "One post carries {top_post_share} of their plays, and typical reach is small ({reach_plays} median plays). Plan paid amplification and judge the post on the test numbers, not on views.",
+        "Confirm the older child's age: a gift post points to about seven to ten."
+      ]
+    },
+    {
+      "handle": "mumma_and_ridhu",
+      "product": "nutrimix_2plus",
+      "idea": "A calm 'mom hack' in the creator's problem-solution style: the little one won't touch plain milk, and Nutrimix is the fix the child visibly enjoys.",
+      "why": [
+        {"text": "Problem-solution product demos with the children are the feed's routine, and brands keep coming back.", "posts": ["DdMBgr8qXnW", "Dcvs-3TqGgL", "DcyXJX5KvtO"]},
+        {"text": "Their younger child is about three and appears in calm, warm everyday moments.", "posts": ["DdS8vUkKs9K", "Dc0YsF5qRpv"]},
+        {"text": "No kids' food or nutrition competitor work in the sample.", "posts": ["DaiBXLwqFi1"]}
+      ],
+      "hook": "The problem, said to camera in the first seconds with the child in frame: plain milk goes untouched again.",
+      "beats": [
+        "The creator states the problem warmly, with the child pushing the glass away.",
+        "The hack: Nutrimix stirred into the same milk.",
+        "The child tastes it, smiles and finishes it. Hold the shot.",
+        "Short, calm explanation using approved claims only.",
+        "Clear ask."
+      ],
+      "child_moment": "The younger child tastes the milk and finishes it, filmed in soft home light.",
+      "reason_to_care": "A toddler who refuses plain milk",
+      "ask": "Buy now, through the link or the creator's code",
+      "tone": "Hinglish, calm and warm, soft cinematic light as in the feed.",
+      "avoid": ["High-pressure sales language", "Height, growth or immunity promises", "Saying 'no added sugar'"],
+      "claims": ["NM_INGREDIENTS", "NM_SWEET", "NM_FLAVOURS"],
+      "ads": ["LJ-095", "LJ-007", "LJ-086"],
+      "check_before_signing": [
+        "The feed is heavily sponsored ({sponsored_share} of recent posts), so organic reach is hard to judge. Ask for reach on their last few organic reels and an audience screenshot.",
+        "One sponsored post carries {top_post_share} of their plays, so averages mislead. Judge them on the test numbers.",
+        "No food content yet, so ask for a short test clip of the milk moment."
+      ]
+    },
+    {
+      "handle": "foodies_by_neha",
+      "product": "proteinmix",
+      "idea": "An episode of the creator's 'Kid's School Tiffin Box Recipe' series in which Proteinmix goes into the dough, finished the way the feed always ends: tasting on camera, ideally with their son's reaction.",
+      "why": [
+        {"text": "Kids' tiffin recipes are their own running series, and the latest episode is already about a high-protein tiffin.", "posts": ["De_NTpuNhPh", "DeqpJGEtvrf"]},
+        {"text": "Tasting the finished dish on camera is a habit of the feed, so a taste moment fits naturally.", "posts": ["De3dDsENpud", "DeyVmtnNyNB"]},
+        {"text": "Feed isn't saturated: only {sponsored_share} of recent posts are sponsored, and the brand has featured them before in its own ad.", "posts": ["DevspGdtcw9"]}
+      ],
+      "hook": "The creator's usual opener to moms, with the episode overlay and the late-morning tiffin problem.",
+      "beats": [
+        "Native opener: running late, the tiffin needs to be quick and filling.",
+        "A scoop of Proteinmix goes into the atta. Show the scoop clearly.",
+        "Fast top-down cooking montage.",
+        "Proof: their son tastes the tiffin and enjoys it. If they prefer not to show his face, hands and voice are enough.",
+        "Clear ask."
+      ],
+      "child_moment": "Their son tastes the tiffin and enjoys it. This would be new for the feed, so it's a request, not a requirement.",
+      "reason_to_care": "Getting more protein into everyday food without a fight",
+      "ask": "Buy now, through the link or the creator's code",
+      "tone": "Fast, warm, instructional Hinglish; bright kitchen; text-overlay episode hook.",
+      "avoid": ["A recipe with no product scoop on screen", "Claiming the taste doesn't change: let the reaction show it", "Height or growth promises"],
+      "claims": ["PM_PROTEIN", "PM_PLANT", "PM_MIXES_IN"],
+      "ads": ["LJ-036", "LJ-097", "LJ-004"],
+      "check_before_signing": [
+        "The brand has its own results from the earlier collaboration (ad LJ-039). Check them first; in this file that ad's spend is too small to read.",
+        "Only {recent_posts} recent posts are in the sample, mostly from one short stretch, so the evidence is thin.",
+        "Their son has never been on camera. Whether he appears is the creator's call; without him the ad tests the recipe angle on its own, which the brand's ads don't support yet."
+      ]
+    }
+  ]
+}

@@ -100,11 +100,21 @@ def test_plays_stay_missing_for_non_video(data):
 
 
 def test_zero_engagement_rule():
-    posts = pd.DataFrame({
-        "plays": [100.0, 600_000.0, np.nan], "likes": [50, 50, 50], "comments": [0, 0, 0], "reshares": [0, 0, 0],
-        "posted_on": ["2026-10-01"] * 3, "is_sponsored": ["no"] * 3, "caption": [""] * 3, "post_url": list("abc"),
-        "transcript": [None] * 3, "transcript_language": [None] * 3, "child_ages": [None] * 3,
-    })
+    posts = pd.DataFrame(
+        {
+            "plays": [100.0, 600_000.0, np.nan],
+            "likes": [50, 50, 50],
+            "comments": [0, 0, 0],
+            "reshares": [0, 0, 0],
+            "posted_on": ["2026-10-01"] * 3,
+            "is_sponsored": ["no"] * 3,
+            "caption": [""] * 3,
+            "post_url": list("abc"),
+            "transcript": [None] * 3,
+            "transcript_language": [None] * 3,
+            "child_ages": [None] * 3,
+        }
+    )
     out, _ = clean.clean_posts(posts)
     assert out.comments_clean[0] == 0  # zero on a tiny post can be real
     assert math.isnan(out.comments_clean[1])  # zero on 600k plays is not
@@ -132,14 +142,17 @@ def test_spoken_language_is_repaired(data):
     assert data.posts.spoken_language.notna().sum() <= data.posts.transcript.notna().sum()
 
 
-@pytest.mark.parametrize("caption,expected", [
-    ("Comment “milk” for the link", True),
-    ("comment LINK below to get it", True),
-    ("Giveaway time!", True),
-    ("Tag a mom who needs this", True),
-    ("What a lovely day with my family", False),
-    ("No comment on this one today", False),
-])
+@pytest.mark.parametrize(
+    "caption,expected",
+    [
+        ("Comment “milk” for the link", True),
+        ("comment LINK below to get it", True),
+        ("Giveaway time!", True),
+        ("Tag a mom who needs this", True),
+        ("What a lovely day with my family", False),
+        ("No comment on this one today", False),
+    ],
+)
 def test_comment_bait_detection(caption, expected):
     assert bool(clean.COMMENT_BAIT.search(caption)) is expected
 

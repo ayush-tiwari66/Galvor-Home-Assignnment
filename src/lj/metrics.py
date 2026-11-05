@@ -1,4 +1,5 @@
 """Ad performance metrics. Unavailable is always NaN, never 0 or infinity."""
+
 from __future__ import annotations
 
 import numpy as np

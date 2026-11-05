@@ -10,7 +10,7 @@ import altair as alt
 import pandas as pd
 import streamlit as st
 
-from lj import config, scoring
+from src.lj import config, scoring
 
 OUT = config.OUTPUTS_DIR
 RULES = list(config.COMPETITOR_RULES)

@@ -89,7 +89,8 @@ def test_comment_bait_posts_are_left_out_of_the_comment_rate(features, data):
 def test_followers_do_not_drive_any_derived_field(features):
     # Followers are context only; the sole derived use is an explicit ratio
     assert features.median_plays_per_follower["livesimply_withkripa"] == pytest.approx(
-        features.all_video_median_plays["livesimply_withkripa"] / features.followers["livesimply_withkripa"])
+        features.all_video_median_plays["livesimply_withkripa"] / features.followers["livesimply_withkripa"]
+    )
 
 
 # ---------------------------------------------------------------- sponsorship
@@ -111,14 +112,32 @@ def test_each_brand_row_points_at_a_real_post(brands, data):
 
 def test_a_brand_row_without_a_matching_post_is_rejected(data, tmp_path):
     path = tmp_path / "brands.csv"
-    pd.DataFrame([dict(handle="hello_ps8", posted_on="2026-10-01", brand="Gritzo", category="direct_kids_nutrition", source="post", note="")]).to_csv(path, index=False)
+    pd.DataFrame(
+        [
+            dict(
+                handle="hello_ps8",
+                posted_on="2026-10-01",
+                brand="Gritzo",
+                category="direct_kids_nutrition",
+                source="post",
+                note="",
+            )
+        ]
+    ).to_csv(path, index=False)
     with pytest.raises(ValueError, match="expected 1 matching post"):
         C.load_brands(data.posts, path)
 
 
 def test_direct_competitors_match_the_reviewed_list(features):
     flagged = set(features.index[features.direct_competitor_posts > 0])
-    assert flagged == {"couple_adishiv", "doc_mama_and_babies", "ekamichildcare", "instamommy_suchi", "raja_choudhary04", "sia_3vedi"}
+    assert flagged == {
+        "couple_adishiv",
+        "doc_mama_and_babies",
+        "ekamichildcare",
+        "instamommy_suchi",
+        "raja_choudhary04",
+        "sia_3vedi",
+    }
     assert features.direct_competitor_posts["raja_choudhary04"] == 3
 
 
@@ -127,7 +146,7 @@ def test_every_sponsored_nutrition_label_is_reviewed(data, brands):
     posts = data.posts
     names = r"gritzo|complan|bournvita|horlicks|pediasure|troovy|good monk|manna"
     tagged = posts[posts.brands_visible.fillna("").str.contains(names, case=False)]
-    reviewed = set(zip(brands.handle, brands.posted_on))
+    reviewed = set(zip(brands.handle, brands.posted_on, strict=True))
     assert all((row.handle, row.posted_on) in reviewed for row in tagged.itertuples())
 
 
@@ -190,7 +209,12 @@ def test_data_gaps_state_missing_audience_and_platform(features):
 # ---------------------------------------------------------------- audit and report
 def test_sponsorship_audit_matches_its_fixed_sample(data):
     posts = data.posts
-    sample = pd.concat([posts[posts.is_sponsored == "yes"].sample(14, random_state=20261104), posts[posts.is_sponsored == "no"].sample(14, random_state=20261104)])
+    sample = pd.concat(
+        [
+            posts[posts.is_sponsored == "yes"].sample(14, random_state=20261104),
+            posts[posts.is_sponsored == "no"].sample(14, random_state=20261104),
+        ]
+    )
     ids = sample.post_url.str.rstrip("/").str.rsplit("/", n=1).str[-1]
     assert set(ids) == set(pd.read_csv(C.SPONSORSHIP_AUDIT).post_id)
 

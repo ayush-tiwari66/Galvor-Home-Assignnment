@@ -91,4 +91,4 @@ def test_report_writes_valid_json_and_markdown(raw, tmp_path):
 
 
 def test_checksum_constant_is_lowercase_hex():
-    assert config.EXPECTED_ZIP_SHA256 == config.EXPECTED_ZIP_SHA256.lower() and len(config.EXPECTED_ZIP_SHA256) == 64
+    assert config.EXPECTED_ZIP_SHA256.lower() == config.EXPECTED_ZIP_SHA256 and len(config.EXPECTED_ZIP_SHA256) == 64

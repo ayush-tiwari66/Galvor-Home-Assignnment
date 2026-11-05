@@ -20,8 +20,18 @@ def concepts(corrected):
 
 
 def good_row(**overrides):
-    row = dict(gap_without_lj004=0.2, adjusted_gap=0.2, median_gap=0.1, gap_without_largest=0.1, controlled_lift=0.3,
-               p=0.001, q=0.05, controlled_p=0.01, n_in=12, n_out=60)
+    row = dict(
+        gap_without_lj004=0.2,
+        adjusted_gap=0.2,
+        median_gap=0.1,
+        gap_without_largest=0.1,
+        controlled_lift=0.3,
+        p=0.001,
+        q=0.05,
+        controlled_p=0.01,
+        n_in=12,
+        n_out=60,
+    )
     return row | overrides
 
 
@@ -167,7 +177,14 @@ def test_controlled_effect_recovers_a_planted_lift():
     feature = pd.Series(np.arange(n) < 30)
     clicks = rng.integers(2000, 8000, n)
     purchases = rng.binomial(clicks, np.where(feature, 0.04, 0.02))
-    frame = pd.DataFrame({"purchases": purchases.astype(float), "link_clicks": clicks.astype(float), "product_line": rng.choice(["a", "b"], n), "language_group": rng.choice(["x", "y"], n)})
+    frame = pd.DataFrame(
+        {
+            "purchases": purchases.astype(float),
+            "link_clicks": clicks.astype(float),
+            "product_line": rng.choice(["a", "b"], n),
+            "language_group": rng.choice(["x", "y"], n),
+        }
+    )
     lift, p = A.controlled_effect(frame, feature, "cvr", control_language=True)
     assert 0.7 < lift < 1.4 and p < 0.001  # the true odds ratio is about 2
 
@@ -196,7 +213,14 @@ def test_pattern_identical_to_a_control_drops_that_control():
     language = pd.Series(np.where(np.arange(n) < 20, "x", "y"))
     clicks = rng.integers(2000, 8000, n)
     purchases = rng.binomial(clicks, np.where(language == "x", 0.04, 0.02))
-    frame = pd.DataFrame({"purchases": purchases.astype(float), "link_clicks": clicks.astype(float), "product_line": rng.choice(["a", "b"], n), "language_group": language})
+    frame = pd.DataFrame(
+        {
+            "purchases": purchases.astype(float),
+            "link_clicks": clicks.astype(float),
+            "product_line": rng.choice(["a", "b"], n),
+            "language_group": language,
+        }
+    )
     lift, p = A.controlled_effect(frame, language == "x", "cvr", control_language=True)
     assert 0.7 < lift < 1.4 and p < 0.001  # a meaningless split between pattern and control would halve this
 
@@ -206,7 +230,14 @@ def test_pattern_identical_to_a_product_cannot_be_separated():
     n = 40
     product = pd.Series(np.where(np.arange(n) < 15, "a", "b"))
     clicks = rng.integers(2000, 8000, n)
-    frame = pd.DataFrame({"purchases": rng.binomial(clicks, 0.03).astype(float), "link_clicks": clicks.astype(float), "product_line": product, "language_group": "x"})
+    frame = pd.DataFrame(
+        {
+            "purchases": rng.binomial(clicks, 0.03).astype(float),
+            "link_clicks": clicks.astype(float),
+            "product_line": product,
+            "language_group": "x",
+        }
+    )
     lift, p = A.controlled_effect(frame, product == "a", "cvr", control_language=True)
     assert math.isnan(lift) and math.isnan(p)
 
@@ -221,7 +252,9 @@ def test_grade_falls_to_directional_when_a_strong_condition_fails(change):
     assert A.grade(good_row(**change)) == "Directional"
 
 
-@pytest.mark.parametrize("field", ["gap_without_lj004", "adjusted_gap", "median_gap", "gap_without_largest", "controlled_lift"])
+@pytest.mark.parametrize(
+    "field", ["gap_without_lj004", "adjusted_gap", "median_gap", "gap_without_largest", "controlled_lift"]
+)
 def test_any_view_disagreeing_means_inconclusive(field):
     assert A.grade(good_row(**{field: -0.1})) == "Inconclusive"
 
@@ -238,7 +271,7 @@ def table(corrected):
 
 
 def test_every_theme_points_at_a_real_result(table):
-    tested = set(zip(table.pattern, table.metric))
+    tested = set(zip(table.pattern, table.metric, strict=True))
     for theme in A.THEMES:
         for key in theme["evidence"]:
             assert key in tested, key
@@ -252,7 +285,13 @@ def test_theme_readings_carry_no_hand_typed_figures():
 
 
 def test_rate_without_top_by_hand():
-    frame = pd.DataFrame({"purchases": [100.0, 10.0, 1.0, 1.0], "link_clicks": [1000.0, 100.0, 100.0, 100.0], "spend_inr": [9.0, 8.0, 1.0, 2.0]})
+    frame = pd.DataFrame(
+        {
+            "purchases": [100.0, 10.0, 1.0, 1.0],
+            "link_clicks": [1000.0, 100.0, 100.0, 100.0],
+            "spend_inr": [9.0, 8.0, 1.0, 2.0],
+        }
+    )
     mask = pd.Series([True, True, True, True])
     assert A.rate_without_top(frame, mask, "cvr", n=2) == pytest.approx(2 / 200)
 

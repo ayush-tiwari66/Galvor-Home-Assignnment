@@ -1,0 +1,9 @@
+claim_id,products,text,tier,match,note
+NM_INGREDIENTS,nutrimix_2plus;nutrimix_7plus,"Made with ragi, bajra, almonds and walnuts",label_check,"ragi.{0,20}bajra.{0,20}(?:almond|badam)",Ingredient statement
+NM_SWEET,nutrimix_2plus;nutrimix_7plus,Sweetened with jaggery and dates,label_check,jaggery and dates,"Don't pair with 'zero added sugar' or 'no added sugar': other ads say both, which could mislead"
+NM_FLAVOURS,nutrimix_2plus,"Comes in chocolate, vanilla and strawberry",label_check,"chocolate, vanilla, strawberry",Check current flavours
+NM_VITAMINS,nutrimix_2plus;nutrimix_7plus;nutrimix_unspecified,Has 23 vitamins and minerals,needs_approval,23 (?:essential )?vitamins,"Number must match the pack; gummy ads use 11, 11+ and 12, so don't mix them up"
+NM7_PROTEIN,nutrimix_7plus,9g protein in 2 scoops,needs_approval,9g protein,Nutrient claim; needs sign-off. Don't add the 'equal to 2 eggs' comparison
+PM_PROTEIN,proteinmix,"1 scoop (15g) gives 12g plant protein",needs_approval,12g,Nutrient claim; needs sign-off
+PM_PLANT,proteinmix,"100% plant protein, from pea, brown rice and soy",label_check,plant,Check the protein sources on the pack
+PM_MIXES_IN,proteinmix,"Mixes into roti, dosa, cheela and pancakes",needs_approval,"(?:roti|dosa|cheela|chilla)","Some ads add 'no taste change'; a taste claim needs approval, so let the child's reaction show it instead"

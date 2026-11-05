@@ -62,7 +62,14 @@ def test_wilson_interval_behaves_at_the_edges():
 
 
 def test_summary_excludes_cannot_tell_from_agreement():
-    frame = pd.DataFrame({"ad_id": ["a", "b", "c"], "label": ["setting"] * 3, "system_value": ["x"] * 3,
-                          "verdict": ["agree", "disagree", "cannot_tell"], "note": ["", "n", "n"]})
+    frame = pd.DataFrame(
+        {
+            "ad_id": ["a", "b", "c"],
+            "label": ["setting"] * 3,
+            "system_value": ["x"] * 3,
+            "verdict": ["agree", "disagree", "cannot_tell"],
+            "note": ["", "n", "n"],
+        }
+    )
     row = audit.summarise(frame).iloc[0]
     assert row.agreement == pytest.approx(0.5) and row.cannot_tell == 1

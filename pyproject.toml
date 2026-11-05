@@ -11,8 +11,14 @@ dependencies = [
 ]
 
 [dependency-groups]
-dev = ["pytest>=8"]
+dev = [
+    "pytest>=8",
+    "ruff>=0.17.3",
+]
 audit = ["imageio-ffmpeg>=0.5", "pillow>=10"]
+app = [
+    "streamlit>=1.66.1",
+]
 
 [build-system]
 requires = ["hatchling"]
@@ -24,3 +30,12 @@ packages = ["src/lj"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM"]
+# Report writers hold long prose strings; the formatter keeps code itself within 120 characters.
+ignore = ["E501"]

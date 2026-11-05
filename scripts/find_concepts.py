@@ -5,6 +5,7 @@ Run with: uv run --group audit python scripts/find_concepts.py
 Compares frame fingerprints (reads frames over HTTP, so nothing large is downloaded) and transcript text, then
 writes candidate pairs for human review. The reviewed result lives in data/overrides/ad_concepts.csv.
 """
+
 from __future__ import annotations
 
 import difflib
@@ -28,8 +29,22 @@ MATCH_BITS = 10  # two frames of 64 bits count as the same shot if they differ b
 
 def fingerprint(url: str, seconds: float) -> str | None:
     """A 64-bit difference hash of the frame's central area (ignores letterboxing and most captions)."""
-    command = [FFMPEG, "-loglevel", "error", "-ss", f"{seconds:.2f}", "-i", url, "-frames:v", "1",
-               "-vf", "crop=iw*0.7:ih*0.5,scale=9:8,format=gray", "-f", "rawvideo", "-"]
+    command = [
+        FFMPEG,
+        "-loglevel",
+        "error",
+        "-ss",
+        f"{seconds:.2f}",
+        "-i",
+        url,
+        "-frames:v",
+        "1",
+        "-vf",
+        "crop=iw*0.7:ih*0.5,scale=9:8,format=gray",
+        "-f",
+        "rawvideo",
+        "-",
+    ]
     try:
         raw = subprocess.run(command, capture_output=True, timeout=90).stdout
     except subprocess.TimeoutExpired:
@@ -75,9 +90,20 @@ def main() -> None:
         speech = difflib.SequenceMatcher(None, tidy(rows.transcript[a])[:600], tidy(rows.transcript[b])[:600]).ratio()
         hook = difflib.SequenceMatcher(None, tidy(rows.hook_line[a]), tidy(rows.hook_line[b])).ratio()
         if shared >= 2 or speech >= 0.55 or hook >= 0.7:
-            pairs.append({"a": a, "b": b, "shots": shared, "speech": round(speech, 2), "hook": round(hook, 2),
-                          "lang": f"{rows.language[a]}/{rows.language[b]}", "product": f"{rows['product'][a]}/{rows['product'][b]}",
-                          "roas": f"{rows.roas[a]:.2f}/{rows.roas[b]:.2f}", "hook_a": str(rows.hook_line[a])[:45], "hook_b": str(rows.hook_line[b])[:45]})
+            pairs.append(
+                {
+                    "a": a,
+                    "b": b,
+                    "shots": shared,
+                    "speech": round(speech, 2),
+                    "hook": round(hook, 2),
+                    "lang": f"{rows.language[a]}/{rows.language[b]}",
+                    "product": f"{rows['product'][a]}/{rows['product'][b]}",
+                    "roas": f"{rows.roas[a]:.2f}/{rows.roas[b]:.2f}",
+                    "hook_a": str(rows.hook_line[a])[:45],
+                    "hook_b": str(rows.hook_line[b])[:45],
+                }
+            )
     result = pd.DataFrame(pairs).sort_values(["shots", "speech"], ascending=False)
     print(f"frames hashed: {len(hashes)} across {len(frames)} ads; candidate pairs: {len(result)}")
     print(result.to_string(index=False))
