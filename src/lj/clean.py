@@ -1,4 +1,5 @@
 """Cleaning rules. Each row-level change goes into the cleaning log, so it can be traced and challenged."""
+
 from __future__ import annotations
 
 import re
@@ -52,7 +53,9 @@ def clean_ads(ads: pd.DataFrame, product_map: pd.DataFrame) -> tuple[pd.DataFram
     unmapped = set(out.ad_id) ^ set(product_map.ad_id)
     if unmapped:
         raise ValueError(f"Product map and ads.csv disagree on: {sorted(unmapped)}")
-    out = out.merge(product_map[["ad_id", "product", "product_line", "segment"]], on="ad_id", how="left", validate="one_to_one")
+    out = out.merge(
+        product_map[["ad_id", "product", "product_line", "segment"]], on="ad_id", how="left", validate="one_to_one"
+    )
 
     out["launch_date"] = pd.to_datetime(out.launch_date)
     out["stopped_date"] = pd.to_datetime(out.stopped_date)
@@ -82,6 +85,7 @@ def clean_ads(ads: pd.DataFrame, product_map: pd.DataFrame) -> tuple[pd.DataFram
 # ---------------------------------------------------------------- posts
 def repair_transcript_language(posts: pd.DataFrame) -> pd.Series:
     """Spoken language per post. Blank without a transcript; pasted text reduced to its leading language name."""
+
     def repair(value):
         if pd.isna(value) or len(value) <= 25:
             return value
@@ -113,12 +117,32 @@ def clean_posts(posts: pd.DataFrame, as_of: pd.Timestamp = config.POSTS_AS_OF) -
     out["child_age_bands"] = out.child_ages.fillna("").map(lambda s: [b.strip() for b in s.split(";") if b.strip()])
 
     for _, row in out[hidden].iterrows():
-        log.append(_entry("posts", row.post_url, "likes", row.likes, "missing", "very low like count: hidden by the account"))
+        log.append(
+            _entry("posts", row.post_url, "likes", row.likes, "missing", "very low like count: hidden by the account")
+        )
     for column in ("reshares", "comments"):
         for _, row in out[out[column].eq(0) & out[f"{column}_clean"].isna()].iterrows():
-            log.append(_entry("posts", row.post_url, column, 0, "missing", "zero at scale or without play count: treated as unavailable"))
+            log.append(
+                _entry(
+                    "posts",
+                    row.post_url,
+                    column,
+                    0,
+                    "missing",
+                    "zero at scale or without play count: treated as unavailable",
+                )
+            )
     for _, row in out[out.transcript_language.notna() & (out.transcript_language != out.spoken_language)].iterrows():
-        log.append(_entry("posts", row.post_url, "transcript_language", str(row.transcript_language)[:40], row.spoken_language, "repaired language value"))
+        log.append(
+            _entry(
+                "posts",
+                row.post_url,
+                "transcript_language",
+                str(row.transcript_language)[:40],
+                row.spoken_language,
+                "repaired language value",
+            )
+        )
     return out, log
 
 

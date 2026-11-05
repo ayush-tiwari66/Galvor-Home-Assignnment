@@ -1,9 +1,10 @@
 """Run with: uv run python -m lj.pipeline"""
+
 from __future__ import annotations
 
 import sys
 
-from lj import ads, clean, config, creators, ingest, validate
+from lj import ads, briefs, clean, config, creators, ingest, scoring, validate
 
 
 def main() -> int:
@@ -24,7 +25,8 @@ def main() -> int:
     data.posts.to_csv(config.PROCESSED_DIR / "posts_clean.csv", index=False)
     data.log.to_csv(config.OUTPUTS_DIR / "cleaning_log.csv", index=False)
     print(f"Cleaning log: {len(data.log)} changes.")
-    return ads.main() or creators.main()
+    # Each step takes the cleaned data, so the zip is read and checked once per run.
+    return ads.main(data) or creators.main(data) or scoring.main() or briefs.main(data)
 
 
 if __name__ == "__main__":

@@ -1,4 +1,5 @@
 """Read the four CSVs directly from the supplied zip, after checking it is the expected file."""
+
 from __future__ import annotations
 
 import hashlib

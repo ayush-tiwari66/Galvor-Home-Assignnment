@@ -8,8 +8,16 @@ from lj.metrics import add_ad_metrics, pooled_metrics, safe_div
 
 
 def ad(**overrides):
-    row = dict(spend_inr=1000.0, impressions=10000.0, video_3s_views=3000.0, thruplays=750.0, link_clicks=100.0,
-               add_to_carts=10.0, purchases=4.0, revenue_inr=2600.0)
+    row = dict(
+        spend_inr=1000.0,
+        impressions=10000.0,
+        video_3s_views=3000.0,
+        thruplays=750.0,
+        link_clicks=100.0,
+        add_to_carts=10.0,
+        purchases=4.0,
+        revenue_inr=2600.0,
+    )
     return row | overrides
 
 

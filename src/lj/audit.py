@@ -1,4 +1,5 @@
 """Summarise the ad label audit recorded in data/audit/label_audit_ads.csv."""
+
 from __future__ import annotations
 
 import math
@@ -56,36 +57,56 @@ def summarise(audit: pd.DataFrame) -> pd.DataFrame:
         agree = int((group.verdict == "agree").sum())
         disagree = int((group.verdict == "disagree").sum())
         low, high = wilson_interval(agree, agree + disagree)
-        rows.append({"label": label, "ads": len(group), "agree": agree, "disagree": disagree,
-                     "cannot_tell": int((group.verdict == "cannot_tell").sum()),
-                     "agreement": agree / (agree + disagree) if agree + disagree else float("nan"),
-                     "low": low, "high": high, "decision": USE_DECISION[label]})
+        rows.append(
+            {
+                "label": label,
+                "ads": len(group),
+                "agree": agree,
+                "disagree": disagree,
+                "cannot_tell": int((group.verdict == "cannot_tell").sum()),
+                "agreement": agree / (agree + disagree) if agree + disagree else float("nan"),
+                "low": low,
+                "high": high,
+                "decision": USE_DECISION[label],
+            }
+        )
     return pd.DataFrame(rows)
 
 
 def write_report(audit: pd.DataFrame, folder: Path = config.OUTPUTS_DIR) -> None:
     summary = summarise(audit)
     lines = [
-        "# Ad label audit", "",
+        "# Ad label audit",
+        "",
         f"**Sample:** {audit.ad_id.nunique()} of 97 distinct videos, fixed in advance: 2 ads that distort the totals, "
-        "the next 4 by spend, and 14 at random (`data/audit/audit_sample.csv`).", "",
+        "the next 4 by spend, and 14 at random (`data/audit/audit_sample.csv`).",
+        "",
         "**Method:** Claude, the AI assistant used on this project, compared six frames per video (three from the first "
         "3 seconds, three across the rest) plus the transcript with the system's labels, without hearing audio. "
         f"The project owner then reviewed {len(HUMAN_SPOT_CHECK)} of the verdicts (see below); the rest have had no human "
-        "check. The sample is too small to estimate error rates precisely, so the intervals below are wide.", "",
+        "check. The sample is too small to estimate error rates precisely, so the intervals below are wide.",
+        "",
         "| Label | Agree | Disagree | Can't tell | Agreement (decided ads) | 95% interval | Decision |",
         "|---|---:|---:|---:|---:|---|---|",
     ]
     for r in summary.itertuples():
-        lines.append(f"| `{r.label}` | {r.agree} | {r.disagree} | {r.cannot_tell} | {r.agreement:.0%} | {r.low:.0%} to {r.high:.0%} | {r.decision} |")
+        lines.append(
+            f"| `{r.label}` | {r.agree} | {r.disagree} | {r.cannot_tell} | {r.agreement:.0%} | {r.low:.0%} to {r.high:.0%} | {r.decision} |"
+        )
     lines += ["", "## Disagreements", "", "| Ad | Label | System value | Finding |", "|---|---|---|---|"]
     for r in audit[audit.verdict == "disagree"].itertuples():
         lines.append(f"| {r.ad_id} | `{r.label}` | {r.system_value} | {r.note} |")
-    lines += ["", "## Human spot-check", "",
-              f"On 4 Nov 2026 the project owner reviewed these {len(HUMAN_SPOT_CHECK)} verdicts against the frame sheets and "
-              "agreed with all of them. Claude chose them rather than sampling at random, so this is a sense check of the "
-              f"harder calls. It is not an independent error rate, and it covers {len(HUMAN_SPOT_CHECK)} of {len(audit)} verdicts.", "",
-              "| Ad | Label | Claude's verdict | Reviewer |", "|---|---|---|---|"]
+    lines += [
+        "",
+        "## Human spot-check",
+        "",
+        f"On 4 Nov 2026 the project owner reviewed these {len(HUMAN_SPOT_CHECK)} verdicts against the frame sheets and "
+        "agreed with all of them. Claude chose them rather than sampling at random, so this is a sense check of the "
+        f"harder calls. It is not an independent error rate, and it covers {len(HUMAN_SPOT_CHECK)} of {len(audit)} verdicts.",
+        "",
+        "| Ad | Label | Claude's verdict | Reviewer |",
+        "|---|---|---|---|",
+    ]
     lines += [f"| {ad_id} | `{label}` | {verdict} | Agreed |" for (ad_id, label), verdict in HUMAN_SPOT_CHECK.items()]
     folder.mkdir(parents=True, exist_ok=True)
     (folder / "label_audit.md").write_text("\n".join(lines) + "\n", encoding="utf-8")

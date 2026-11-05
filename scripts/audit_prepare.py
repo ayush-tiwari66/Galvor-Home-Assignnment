@@ -6,6 +6,7 @@ Add ad IDs after the command to build sheets for just those ads.
 The sample is fixed in advance so it can't drift towards ads that happen to agree with the labels:
 the two ads that distort the totals, the four next-largest by spend, then 14 chosen at random from the rest.
 """
+
 from __future__ import annotations
 
 import subprocess
@@ -33,7 +34,13 @@ def choose_sample(ads: pd.DataFrame) -> pd.DataFrame:
     largest = distinct[~distinct.ad_id.isin(forced.ad_id)].nlargest(4, "spend_inr")
     rest = distinct[~distinct.ad_id.isin(forced.ad_id) & ~distinct.ad_id.isin(largest.ad_id)]
     random = rest.sample(RANDOM_SAMPLE, random_state=SEED)
-    sample = pd.concat([forced.assign(reason="distorts totals"), largest.assign(reason="largest spend"), random.assign(reason="random")])
+    sample = pd.concat(
+        [
+            forced.assign(reason="distorts totals"),
+            largest.assign(reason="largest spend"),
+            random.assign(reason="random"),
+        ]
+    )
     return sample.sort_values("ad_id")
 
 
@@ -43,8 +50,21 @@ def frame_times(duration: float) -> list[float]:
 
 
 def extract(video: Path, seconds: float, target: Path) -> bool:
-    command = [imageio_ffmpeg.get_ffmpeg_exe(), "-y", "-loglevel", "error", "-ss", f"{seconds:.2f}", "-i", str(video),
-               "-frames:v", "1", "-vf", f"scale={TILE_WIDTH}:-2", str(target)]
+    command = [
+        imageio_ffmpeg.get_ffmpeg_exe(),
+        "-y",
+        "-loglevel",
+        "error",
+        "-ss",
+        f"{seconds:.2f}",
+        "-i",
+        str(video),
+        "-frames:v",
+        "1",
+        "-vf",
+        f"scale={TILE_WIDTH}:-2",
+        str(target),
+    ]
     subprocess.run(command, check=True, timeout=60)
     return target.exists()
 
@@ -87,8 +107,19 @@ def main() -> None:
             urllib.request.urlretrieve(row.video_url, video)
         build_sheet(video, row.duration_s, row.ad_id, SHEET_DIR / f"{row.ad_id}.jpg")
         print(row.ad_id, row.reason)
-    columns = ["ad_id", "reason", "child_on_screen", "child_in_first_3s", "first_frame", "ad_format", "creator_type",
-               "product_shown_as", "setting", "product_form", "product"]
+    columns = [
+        "ad_id",
+        "reason",
+        "child_on_screen",
+        "child_in_first_3s",
+        "first_frame",
+        "ad_format",
+        "creator_type",
+        "product_shown_as",
+        "setting",
+        "product_form",
+        "product",
+    ]
     print(sample[columns].to_string(index=False))
 
 
